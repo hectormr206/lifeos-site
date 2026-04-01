@@ -1,0 +1,17 @@
+{
+  "name": "LifeOS",
+  "short_name": "LifeOS",
+  "description": "AI-native Linux from Mexico. Local-first, privacy-first, and built in public.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0F1B",
+  "theme_color": "#0F0F1B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
