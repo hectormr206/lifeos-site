@@ -10,7 +10,8 @@ const SITE_URL = 'https://lifeos.hectormr.com/';
 const LINKS = {
   github: 'https://github.com/hectormr206/lifeos',
   siteRepo: 'https://github.com/hectormr206/lifeos-site',
-  roadmap: 'https://github.com/hectormr206/lifeos/tree/main/docs/strategy',
+  roadmapEn: 'https://github.com/hectormr206/lifeos/blob/main/docs/public/roadmap.md',
+  roadmapEs: 'https://github.com/hectormr206/lifeos/blob/main/docs/public/roadmap.es-mx.md',
   branding:
     'https://github.com/hectormr206/lifeos/blob/main/docs/branding/axi-visual-system.md',
   license: 'https://github.com/hectormr206/lifeos/blob/main/LICENSE',
@@ -182,8 +183,8 @@ const COPY = {
         {
           title: 'Read the roadmap',
           description:
-            'The strategy docs are public and already show the real state of the project and what comes next.',
-          href: LINKS.roadmap,
+            'The public roadmap explains the real state of the project, what is active now, and what comes next.',
+          href: '',
         },
         {
           title: 'Inspect the site source',
@@ -378,8 +379,8 @@ const COPY = {
         {
           title: 'Lee el roadmap',
           description:
-            'Los documentos de estrategia son publicos y ya muestran el estado real del proyecto y lo que sigue.',
-          href: LINKS.roadmap,
+            'El roadmap publico explica el estado real del proyecto, lo que esta activo ahora y lo que sigue.',
+          href: '',
         },
         {
           title: 'Inspecciona el codigo del sitio',
@@ -900,6 +901,12 @@ function Roadmap({locale}: {locale: Locale}) {
 
 function Updates({locale}: {locale: Locale}) {
   const copy = COPY[locale];
+  const roadmapHref = locale === 'es' ? LINKS.roadmapEs : LINKS.roadmapEn;
+  const channels = copy.updates.channels.map((channel) =>
+    channel.title === 'Read the roadmap' || channel.title === 'Lee el roadmap'
+      ? {...channel, href: roadmapHref}
+      : channel,
+  );
 
   return (
     <section className="scroll-mt-24 border-y border-outline/15 bg-surface/42 py-24" id="updates">
@@ -922,7 +929,7 @@ function Updates({locale}: {locale: Locale}) {
           </div>
 
           <div className="grid gap-4">
-            {copy.updates.channels.map((channel) => (
+            {channels.map((channel) => (
               <a
                 className="group rounded-[1.5rem] border border-outline/20 bg-background/78 p-6 transition-colors duration-300 hover:border-primary/35 hover:bg-background"
                 href={channel.href}
@@ -989,6 +996,7 @@ function Support({locale}: {locale: Locale}) {
 
 function Footer({locale}: {locale: Locale}) {
   const copy = COPY[locale];
+  const roadmapHref = locale === 'es' ? LINKS.roadmapEs : LINKS.roadmapEn;
 
   return (
     <footer className="border-t border-outline/20 bg-background/92">
@@ -1015,7 +1023,7 @@ function Footer({locale}: {locale: Locale}) {
             </a>
             <a
               className="text-text-muted transition-colors hover:text-primary"
-              href={LINKS.roadmap}
+              href={roadmapHref}
               rel="noreferrer"
               target="_blank"
             >
