@@ -8,6 +8,7 @@ Use this before generating the final implementation and again before deployment.
 - Does the subheadline avoid hype and still feel ambitious?
 - Is the page clear about being early, not finished?
 - Does the page explain why LifeOS matters beyond "AI on Linux"?
+- If the page mentions origin, is it framed as built in Mexico and open globally instead of region-exclusive?
 
 ## Truthfulness
 
@@ -34,6 +35,7 @@ Use this before generating the final implementation and again before deployment.
 - Does the layout feel deliberate on desktop and mobile?
 - Is there enough visual atmosphere without losing readability?
 - If a mascot or illustration appears, does it respect the existing Axi identity instead of reinventing it?
+- If Mexican references appear, are they subtle and non-touristic?
 
 ## CTA Quality
 

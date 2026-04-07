@@ -71,6 +71,7 @@ Visual direction:
 - Avoid a purple-first look.
 - Avoid switching the identity to a blue-first or generic Vercel-like palette.
 - The brand should acknowledge that Axi is a Mexican axolotl and that this origin is part of the identity of LifeOS.
+- If the page mentions origin explicitly, frame LifeOS as built in Mexico and open to users and contributors anywhere.
 - If the hero uses illustration, wallpaper language, or mascot cues, they should feel rooted in the axolotl origin of the brand, but handled with elegance rather than folklore overload.
 - The page should feel like sovereign computing, not a crypto product and not a chatbot dashboard.
 
@@ -190,6 +191,7 @@ Avoid:
 - generic gradient blobs without structure
 - purple-on-black cyberpunk cliches
 - overdesigned glassmorphism everywhere
+- tourist-poster Mexico aesthetics or exclusionary national framing
 - drifting away from the established LifeOS brand identity
 - introducing a new logo, mascot redesign, or unrelated visual system
 
