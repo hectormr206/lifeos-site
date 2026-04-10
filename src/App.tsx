@@ -589,8 +589,18 @@ function Navbar({
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-8"
       >
-        <a className="font-headline text-xl font-bold tracking-[0.2em] text-primary" href="#top">
+        <a
+          className="flex items-center gap-3 font-headline text-xl font-bold tracking-[0.2em] text-primary"
+          href="#top"
+        >
           LifeOS
+          <span
+            aria-label="LifeOS is in beta"
+            className="rounded-full border border-amber-400/50 bg-amber-400/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-300"
+            title="LifeOS is in beta — expect fast iteration and occasional regressions"
+          >
+            Beta
+          </span>
         </a>
 
         <div className="hidden items-center gap-7 md:flex">
