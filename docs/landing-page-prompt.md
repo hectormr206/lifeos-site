@@ -47,7 +47,7 @@ Core product truths that may be referenced carefully:
 - It runs local inference.
 - It has encrypted local memory foundations.
 - It has desktop control and automation foundations.
-- It has remote interaction foundations through Telegram.
+- It has remote interaction through SimpleX (privacy-first, encrypted, no phone number required).
 - Voice, vision, memory, and system integration are core parts of the direction.
 - Public beta is not complete yet.
 
@@ -114,7 +114,7 @@ Required sections in this order:
   - local inference
   - encrypted local memory foundations
   - desktop control plane foundations
-  - remote loop through Telegram
+  - remote loop through SimpleX (privacy-first, encrypted, no phone number required)
   - voice, vision, and automation groundwork
 - Make this section honest and confidence-building
 
