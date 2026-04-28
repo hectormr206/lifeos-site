@@ -73,31 +73,52 @@ const COPY = {
       items: [
         {
           label: 'Runtime',
-          title: 'Local inference engine',
+          title: 'Local inference, hardware-tuned',
           description:
-            'LifeOS runs local inference through llama.cpp so intelligence can stay tied to your own hardware.',
-          details: ['Local-first responses', 'OS-level integration', 'No cloud dependency by default'],
+            'LifeOS runs Qwen3.5 on your own GPU through llama.cpp. A microbenchmark picks the right context size, threads, and batch sizes for your machine on first boot.',
+          details: ['Local-first responses', 'Hardware auto-tuning', 'No cloud dependency by default'],
         },
         {
           label: 'Memory',
-          title: 'Encrypted local memory foundations',
+          title: 'Real persistent memory (no silent forgetting)',
           description:
-            'Personal context is designed to remain encrypted at rest and anchored to the machine you control.',
-          details: ['Private context store', 'Encrypted at rest', 'Built for sovereign recall'],
+            'Tools travel via the OpenAI tool-calls channel, so when Axi says "I saved that" it actually wrote a row to encrypted SQLite. Past narratives that lied are sanitized so the model re-invokes tools rather than trusting stale claims.',
+          details: ['Encrypted at rest (AES-256-GCM-SIV)', 'Verified persistence', 'Edit / link / delete tools exposed'],
+        },
+        {
+          label: 'Hardware-aware AI',
+          title: 'Game Guard with per-profile model swap',
+          description:
+            'When a game grabs the GPU, Axi switches from Qwen3.5-9B (full GPU) to Qwen3.5-4B in CPU keeping the same 131K-token context window — so tool-calling and long conversations stay intact instead of degrading. Restored to 9B+GPU when the game closes.',
+          details: ['Same large context across swaps', 'Auto-detect game processes', 'Falls back to safe profile on low-RAM machines'],
+        },
+        {
+          label: 'Life Areas',
+          title: 'Domain-specific backends out of the box',
+          description:
+            'Freelance (clientes/sesiones/facturas), Finanzas, Vehículos, Viajes, and Proyectos each ship as first-class domains with schemas, LLM tools, and REST endpoints. Freelance has a full dashboard tab; the others land backend-first.',
+          details: ['100+ LLM tools wired', 'REST endpoints localhost-only', 'Dashboard UI shipping incrementally'],
         },
         {
           label: 'Control',
-          title: 'Desktop control plane foundations',
+          title: 'Desktop control plane',
           description:
-            'A Rust daemon, local APIs, and operator surfaces form the base for deeper automation and system control.',
-          details: ['Rust daemon core', 'System-facing APIs', 'Operator-first surface'],
+            'A Rust daemon (lifeosd) on 127.0.0.1:8081 + WebSocket exposes local APIs for windows, apps, clipboard, browser, LibreOffice, COSMIC desktop, and accessibility trees. Operator-first by design.',
+          details: ['Rust daemon core', 'Bootstrap-token gated APIs', 'Privacy-aware LLM router (13+ providers)'],
         },
         {
           label: 'Remote loop',
-          title: 'Telegram interaction today',
+          title: 'SimpleX as the privacy-first remote channel',
           description:
-            'LifeOS already has a real remote bridge so you can reach your system from outside the desk.',
-          details: ['Remote notifications', 'Mobile reach', 'Secure bridge foundations'],
+            'No phone number, no central server, end-to-end encrypted. The simplex-bridge service is the canonical remote interaction surface; Axi can chat, transcribe voice notes, and reply with Kokoro TTS audio.',
+          details: ['E2E encrypted by default', 'No identifiers required', 'Voice notes in and out via Kokoro-82M'],
+        },
+        {
+          label: 'Operations',
+          title: 'Immutable + rollback base',
+          description:
+            'Bootc-style atomic updates with two slots and rollback-on-fail. Updates land via a layer-delta workflow over WireGuard for the maintainer; users get the same image via GHCR.',
+          details: ['Two-slot ostree boot', 'GRUB titles auto-refresh per release', 'Self-healing schema migrations'],
         },
       ],
     },
@@ -269,31 +290,52 @@ const COPY = {
       items: [
         {
           label: 'Runtime',
-          title: 'Motor de inferencia local',
+          title: 'Inferencia local, ajustada al hardware',
           description:
-            'LifeOS corre inferencia local con llama.cpp para que la inteligencia permanezca ligada a tu propio hardware.',
-          details: ['Respuestas local-first', 'Integracion al nivel del OS', 'Sin nube por defecto'],
+            'LifeOS corre Qwen3.5 en tu propia GPU via llama.cpp. Un microbenchmark elige contexto, threads y batch sizes adecuados a tu maquina en el primer arranque.',
+          details: ['Respuestas local-first', 'Auto-tuning de hardware', 'Sin nube por defecto'],
         },
         {
           label: 'Memoria',
-          title: 'Bases de memoria local cifrada',
+          title: 'Memoria persistente real (sin olvido silencioso)',
           description:
-            'El contexto personal esta pensado para permanecer cifrado en reposo y anclado a la maquina que controlas.',
-          details: ['Contexto privado', 'Cifrado en reposo', 'Hecho para recuerdo soberano'],
+            'Las tools viajan por el canal OpenAI tool-calls, asi que cuando Axi dice "ya lo guarde" realmente escribio una fila al SQLite cifrado. Las narrativas pasadas que mintieron se sanitizan para que el modelo re-invoque tools, no confie en claims viejos.',
+          details: ['Cifrado en reposo (AES-256-GCM-SIV)', 'Persistencia verificada', 'Tools de editar / vincular / borrar expuestas'],
+        },
+        {
+          label: 'IA hardware-aware',
+          title: 'Game Guard con cambio de modelo por perfil',
+          description:
+            'Cuando un juego toma la GPU, Axi cambia de Qwen3.5-9B (GPU full) a Qwen3.5-4B en CPU manteniendo la MISMA ventana de contexto de 131K tokens — para que tool-calling y conversaciones largas no se degraden. Vuelve a 9B+GPU al cerrar el juego.',
+          details: ['Mismo contexto grande en ambos perfiles', 'Auto-deteccion de procesos de juego', 'Fallback seguro en maquinas con poca RAM'],
+        },
+        {
+          label: 'Areas de vida',
+          title: 'Backends de dominio listos',
+          description:
+            'Freelance (clientes/sesiones/facturas), Finanzas, Vehiculos, Viajes y Proyectos arrancan como dominios de primera clase con schemas, tools de LLM y endpoints REST. Freelance ya tiene tab completa en el dashboard; los demas llegan backend-first.',
+          details: ['100+ tools LLM cableadas', 'Endpoints REST loopback-only', 'UI de dashboard incremental'],
         },
         {
           label: 'Control',
-          title: 'Bases del control plane de escritorio',
+          title: 'Plano de control del escritorio',
           description:
-            'Un daemon en Rust, APIs locales y superficies de operacion forman la base para automatizacion y control del sistema mas profundos.',
-          details: ['Core en Rust', 'APIs orientadas al sistema', 'Superficie pensada para operar'],
+            'Un daemon en Rust (lifeosd) en 127.0.0.1:8081 + WebSocket expone APIs locales para ventanas, apps, clipboard, browser, LibreOffice, COSMIC y arboles de accesibilidad. Pensado para operar.',
+          details: ['Core en Rust', 'APIs gateadas con bootstrap-token', 'LLM router con 13+ providers, conscientes de privacidad'],
         },
         {
           label: 'Loop remoto',
-          title: 'Interaccion por Telegram hoy',
+          title: 'SimpleX como canal remoto privacy-first',
           description:
-            'LifeOS ya tiene un puente remoto real para hablar con tu sistema aunque no estes frente al escritorio.',
-          details: ['Notificaciones remotas', 'Alcance movil', 'Bases de puente seguro'],
+            'Sin numero de telefono, sin servidor central, cifrado punta a punta. El servicio simplex-bridge es la superficie canonica de interaccion remota; Axi puede chatear, transcribir notas de voz y responder con audio Kokoro TTS.',
+          details: ['Cifrado E2E por defecto', 'Sin identificadores requeridos', 'Notas de voz entrada/salida via Kokoro-82M'],
+        },
+        {
+          label: 'Operaciones',
+          title: 'Base inmutable con rollback',
+          description:
+            'Updates atomicos estilo bootc con dos slots y rollback automatico ante falla. Para el mantenedor, los updates llegan por flujo de layer-delta sobre WireGuard; los usuarios reciben la misma imagen via GHCR.',
+          details: ['Boot ostree de dos slots', 'Titulos GRUB se auto-actualizan en cada release', 'Migraciones de schema self-healing'],
         },
       ],
     },
