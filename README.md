@@ -1,8 +1,8 @@
 # LifeOS Site
 
-Public landing page for LifeOS.
+Public landing page for LifeOS / Axi — local-first AI personal assistant.
 
-This repo exists separately from the operating system repo so the public site can evolve fast while the main LifeOS codebase stays focused on the OS itself.
+This repo exists separately from the assistant repo so the public site can evolve fast while the main LifeOS codebase stays focused on the assistant itself.
 
 ## Stack
 

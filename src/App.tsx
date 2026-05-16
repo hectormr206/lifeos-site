@@ -10,10 +10,9 @@ const SITE_URL = 'https://lifeos.hectormr.com/';
 const LINKS = {
   github: 'https://github.com/hectormr206/lifeos',
   siteRepo: 'https://github.com/hectormr206/lifeos-site',
-  roadmapEn: 'https://github.com/hectormr206/lifeos/blob/main/docs/public/roadmap.md',
-  roadmapEs: 'https://github.com/hectormr206/lifeos/blob/main/docs/public/roadmap.es-mx.md',
-  branding:
-    'https://github.com/hectormr206/lifeos/blob/main/docs/branding/axi-visual-system.md',
+  roadmapEn: 'https://github.com/hectormr206/lifeos/blob/main/docs/PRD-NEXT.md',
+  roadmapEs: 'https://github.com/hectormr206/lifeos/blob/main/docs/PRD-NEXT.md',
+  branding: 'https://github.com/hectormr206/lifeos/blob/main/README.md',
   license: 'https://github.com/hectormr206/lifeos/blob/main/LICENSE',
   sponsors: 'https://github.com/sponsors/hectormr206',
 };
@@ -21,17 +20,17 @@ const LINKS = {
 const COPY = {
   en: {
     meta: {
-      title: 'LifeOS | AI-native Linux from Mexico',
+      title: 'LifeOS / Axi | Local-first AI personal assistant',
       description:
-        'LifeOS is an AI-native Linux distribution focused on local-first intelligence, privacy by default, and sovereign personal computing.',
+        'LifeOS / Axi is a local-first AI personal assistant. Voice, vision, memory, and a real-time interpreter, running 100% on your laptop.',
       ogDescription:
-        'A local-first, privacy-first Linux operating system exploring private memory, local inference, and sovereign computing.',
+        'A local-first AI personal assistant with voice, vision, memory, and a real-time interpreter — running 100% on your laptop. No cloud, no telemetry.',
       twitterDescription:
-        'LifeOS is building a local-first, privacy-first Linux operating system for sovereign personal computing.',
+        'LifeOS / Axi is a local-first AI personal assistant. Voice, vision, memory, and a real-time interpreter, running on your laptop.',
       siteDescription:
-        'AI-native Linux from Mexico. Local-first, privacy-first, and built in public.',
+        'Local-first AI personal assistant from Mexico. Runs on your laptop. No cloud, no telemetry.',
       softwareDescription:
-        'An AI-native Linux distribution focused on local-first intelligence, privacy by default, and sovereign personal computing.',
+        'A local-first AI personal assistant with voice, vision, memory, meeting recorder, and a real-time interpreter — designed to run entirely on a single laptop.',
       locale: 'en_US',
       htmlLang: 'en',
     },
@@ -44,60 +43,74 @@ const COPY = {
       language: 'Language',
     },
     hero: {
-      eyebrow: 'AI-native Linux from Mexico',
+      eyebrow: 'AI assistant from Mexico',
       titleBefore: 'AI that lives',
       titleAccent: 'with you',
       titleAfter: 'not above you.',
       body:
-        'LifeOS is an AI-native Linux distribution for people who want local inference, private memory, and system automation to belong to their own hardware. Axi, the project’s Mexican axolotl, carries that idea of calm, sovereign computing.',
+        'LifeOS / Axi is a local-first AI personal assistant: voice, vision, memory, and a real-time interpreter, running 100% on your laptop. No cloud, no telemetry. Axi, the project’s Mexican axolotl, carries that idea of calm, sovereign computing.',
       primaryCta: 'Get updates',
       secondaryCta: 'View on GitHub',
-      chips: ['Local inference', 'Private memory', 'Telegram bridge', 'Open source'],
+      chips: ['Voice + vision', 'Local inference', 'Real-time interpreter', 'Privacy by default'],
       signal: 'Axi signal',
-      surface: 'Sovereign computing surface',
-      prompt: 'life ask "Who owns my data?"',
+      surface: 'Local-first assistant surface',
+      prompt: 'axi> "Who owns my data?"',
       response: 'You do. Local by default. Sovereign by design.',
       memoryTitle: 'Memory',
       memoryBody:
-        'Context stays on your machine instead of becoming training exhaust for a cloud vendor.',
-      operatorTitle: 'Operator loop',
+        'Your conversations, facts, and meeting notes stay in SQLite on your disk — never uploaded, never used to train anyone else’s model.',
+      operatorTitle: 'Assistant loop',
       operatorBody:
-        'Voice, automation, remote interaction, and system control are being built as native capabilities.',
+        'Voice, screen and camera Q&A, meetings, and a real-time EN→ES interpreter run as native services on your machine.',
       motifLabel: 'Axi / Mexican axolotl',
     },
     proofs: {
       eyebrow: 'Current status',
       title: 'What works today',
       intro:
-        'LifeOS is still early, but not imaginary. These are the foundations already present in the project and driving the public direction forward.',
+        'Axi is still early, but not imaginary. These are real capabilities already running on a single laptop, driving the public direction forward.',
       items: [
         {
-          label: 'Runtime',
-          title: 'Local inference engine',
+          label: 'Voice',
+          title: 'Axi voice assistant',
           description:
-            'LifeOS runs local inference through llama.cpp so intelligence can stay tied to your own hardware.',
-          details: ['Local-first responses', 'OS-level integration', 'No cloud dependency by default'],
+            'Dictation, Q&A with screen, and Q&A with camera — Spanish-first, with voice commands like “Axi, abre el dashboard”.',
+          details: ['Whisper turbo on GPU', 'Piper TTS', 'Voice intents to the OS'],
+        },
+        {
+          label: 'Brain',
+          title: 'Switchable local LLMs',
+          description:
+            'Qwen3.6 35B-A3B (MoE) runs locally on 12 GB VRAM via llama.cpp. A catalog of 9 multimodal 2026 models is switchable from the dashboard.',
+          details: ['llama.cpp on Blackwell', 'Per-model parameter tweaking', '9-model catalog'],
+        },
+        {
+          label: 'Meetings',
+          title: 'Long-meeting recorder',
+          description:
+            'Incremental transcription, speaker diarization, and hierarchical Qwen-generated summaries — designed for multi-hour sessions.',
+          details: ['Resemblyzer + pyannote diarization', 'Screenshot capture with phash dedup', 'Searchable from dashboard'],
         },
         {
           label: 'Memory',
-          title: 'Encrypted local memory foundations',
+          title: 'Local memory with full-text search',
           description:
-            'Personal context is designed to remain encrypted at rest and anchored to the machine you control.',
-          details: ['Private context store', 'Encrypted at rest', 'Built for sovereign recall'],
+            'SQLite + FTS5 stores conversation history, extracted facts, and meeting notes — timezone-aware and searchable from the dashboard.',
+          details: ['SQLite + FTS5', 'Facts extraction', 'Stays on your disk'],
         },
         {
-          label: 'Control',
-          title: 'Desktop control plane foundations',
+          label: 'Interpreter',
+          title: 'Real-time EN→ES interpreter',
           description:
-            'A Rust daemon, local APIs, and operator surfaces form the base for deeper automation and system control.',
-          details: ['Rust daemon core', 'System-facing APIs', 'Operator-first surface'],
+            'Chunked Whisper + Qwen translation + Piper TTS. Captures system audio via PipeWire null-sink, plays Spanish out your headphones in under 3 seconds.',
+          details: ['Sub-3s latency in fluid mode', 'PipeWire null-sink capture', 'Plays to BT headphones'],
         },
         {
-          label: 'Remote loop',
-          title: 'Telegram interaction today',
+          label: 'Game Guard',
+          title: 'One-click VRAM reclaim',
           description:
-            'LifeOS already has a real remote bridge so you can reach your system from outside the desk.',
-          details: ['Remote notifications', 'Mobile reach', 'Secure bridge foundations'],
+            'Frees all 12 GB VRAM for demanding games like RE Requiem or Cyberpunk RT. Models stop; the tray stays alive. Restore puts everything back on GPU.',
+          details: ['One-click free 12 GB', 'Tray survives reclaim', 'Restore returns to GPU'],
         },
       ],
     },
@@ -105,25 +118,25 @@ const COPY = {
       eyebrow: 'Why LifeOS',
       title: 'Built for permanence',
       intro:
-        'LifeOS exists because we do not want intelligence to become another rented layer of modern computing. The OS itself has to carry the values.',
+        'LifeOS exists because we do not want intelligence to become another rented layer of modern computing. The assistant itself has to carry the values.',
       items: [
         {
           number: '01',
           title: 'Local-first AI',
           description:
-            'LifeOS treats on-device intelligence as the default, not the fallback. Your machine should not depend on someone else’s datacenter to think.',
+            'Axi treats on-device intelligence as the default, not the fallback. Your laptop should not depend on someone else’s datacenter to think.',
         },
         {
           number: '02',
           title: 'Privacy by default',
           description:
-            'Memory, automation, and context should live under your control. Privacy is not a premium feature layered on later.',
+            'Conversations, audio, meeting recordings, and memory stay on your disk. No cloud APIs, no telemetry, no training exhaust.',
         },
         {
           number: '03',
-          title: 'AI-native operating system',
+          title: 'Single user, single laptop',
           description:
-            'LifeOS is not a chatbot wrapped around Linux. It is an operating system direction where inference, memory, voice, vision, and automation belong in the OS layer.',
+            'No multi-tenant servers, no accounts, no auth flows. Modular Python services — voice, brain, memory, dashboard, tray — coordinated by systemd on one machine.',
         },
       ],
     },
@@ -131,37 +144,37 @@ const COPY = {
       eyebrow: 'Why this matters',
       title: 'The cloud should not be the owner of your intelligence.',
       body:
-        'LifeOS is building a different default: local-first AI, private memory, and automation that answers to the machine you own instead of a platform that rents your future back to you.',
+        'Axi is building a different default: local-first AI, private memory, voice and vision that answer to the machine you own instead of a platform that rents your future back to you.',
       cloudTitle: 'Cloud default',
       cloudBody:
         'Remote models, vendor lock-in, fragmented memory, and invisible data extraction become the normal shape of computing.',
-      directionTitle: 'LifeOS direction',
+      directionTitle: 'Axi direction',
       directionBody:
-        'Open source infrastructure, local inference, auditable control surfaces, and a system that keeps your memory and automation close to your own hardware.',
+        'Open source Python services, local inference on consumer GPUs, auditable surfaces, and an assistant that keeps your voice, vision, and memory on your own laptop.',
     },
     roadmap: {
-      eyebrow: 'Road to public beta',
-      title: 'What comes next',
+      eyebrow: 'What comes next',
+      title: 'Near-term direction',
       intro:
-        'The near-term goal is not hype. It is to make the real system more stable, more usable, and easier to follow in public.',
+        'The near-term goal is not hype. It is to make the real assistant more polished, more multilingual, and easier to follow in public.',
       items: [
         {
           status: 'Active now',
-          title: 'Stabilize the public beta foundation',
+          title: 'Streaming model download UI',
           description:
-            'Keep hardening the everyday install, boot, update, and recovery path so LifeOS feels dependable on real hardware.',
+            'Progress-bar UX in the dashboard for pulling new local models from the 9-model catalog, with checksum verification and resume support.',
         },
         {
           status: 'In progress',
-          title: 'Improve accessible desktop control',
+          title: 'Side-by-side model evaluation',
           description:
-            'Grow the operator loop around Axi, desktop automation, and remote system control without depending on fragile cloud glue.',
+            'Run two local models on the same prompt and compare latency, quality, and VRAM footprint directly from the dashboard.',
         },
         {
           status: 'Next up',
-          title: 'Expand public docs, demos, and onboarding',
+          title: 'Diarization V1 and more voice intents',
           description:
-            'Make LifeOS easier to understand, test, and follow in public through clearer guides, demos, and installation paths.',
+            'Promote pyannote diarization to default, plus a wider set of voice commands and an OCR runtime that activates when tesseract is installed.',
         },
       ],
     },
@@ -169,7 +182,7 @@ const COPY = {
       eyebrow: 'Follow the project',
       title: 'Get updates',
       intro:
-        'The newsletter and public demo channels are opening next. Until then, GitHub and the roadmap are the honest, canonical places to track LifeOS.',
+        'The newsletter and public demo channels are opening next. Until then, GitHub and the roadmap are the honest, canonical places to track Axi.',
       comingSoonTitle: 'Coming soon',
       comingSoonBody:
         'Public demos on YouTube and Twitch will be linked here once the first broadcast cadence is live.',
@@ -183,7 +196,7 @@ const COPY = {
         {
           title: 'Read the roadmap',
           description:
-            'The public roadmap explains the real state of the project, what is active now, and what comes next.',
+            'The PRD-NEXT doc explains the real state of the assistant, what is active now, and what comes next.',
           href: '',
         },
         {
@@ -198,36 +211,36 @@ const COPY = {
       eyebrow: 'Support LifeOS',
       title: 'Help turn a private prototype into public infrastructure.',
       intro:
-        'LifeOS is being built in the open. Early support helps fund the work needed to move from promising foundations to a stable public beta for people who care about sovereign computing.',
+        'LifeOS / Axi is being built in the open. Early support helps fund the work needed to move from promising foundations to a polished local-first assistant for people who care about sovereign computing.',
       sponsor: 'Sponsor on GitHub',
       star: 'Star the repo',
     },
     footer: {
       description:
-        'AI-native Linux from Mexico. Local-first, privacy-first, and built in public around the idea that your intelligence should belong to you.',
+        'Local-first AI personal assistant from Mexico. Voice, vision, memory, and a real-time interpreter — running 100% on your laptop, built in public.',
       project: 'Project',
       brandAndLicense: 'Brand and license',
       github: 'GitHub',
       roadmap: 'Roadmap',
       siteSource: 'Site source',
-      visualSystem: 'Axi visual system',
+      visualSystem: 'Project README',
       license: 'License',
       sponsors: 'GitHub Sponsors',
     },
   },
   es: {
     meta: {
-      title: 'LifeOS | Linux nativo para IA desde Mexico',
+      title: 'LifeOS / Axi | Asistente personal de IA local-first',
       description:
-        'LifeOS es una distribucion Linux nativa para IA enfocada en inteligencia local-first, privacidad por defecto y computacion personal soberana.',
+        'LifeOS / Axi es un asistente personal de IA local-first. Voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop.',
       ogDescription:
-        'Un sistema operativo Linux local-first y privacy-first que explora memoria privada, inferencia local y computacion soberana.',
+        'Un asistente personal de IA local-first con voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop. Sin nube, sin telemetria.',
       twitterDescription:
-        'LifeOS esta construyendo un sistema operativo Linux local-first y privacy-first para computacion personal soberana.',
+        'LifeOS / Axi es un asistente personal de IA local-first. Voz, vision, memoria y un interprete en tiempo real corriendo en tu laptop.',
       siteDescription:
-        'Linux nativo para IA desde Mexico. Local-first, privacy-first y construido en publico.',
+        'Asistente personal de IA local-first desde Mexico. Corre en tu laptop. Sin nube, sin telemetria.',
       softwareDescription:
-        'Una distribucion Linux nativa para IA enfocada en inteligencia local-first, privacidad por defecto y computacion personal soberana.',
+        'Un asistente personal de IA local-first con voz, vision, memoria, grabador de reuniones e interprete en tiempo real — disenado para correr completamente en una sola laptop.',
       locale: 'es_MX',
       htmlLang: 'es-MX',
     },
@@ -240,60 +253,74 @@ const COPY = {
       language: 'Idioma',
     },
     hero: {
-      eyebrow: 'Linux nativo para IA desde Mexico',
+      eyebrow: 'Asistente de IA desde Mexico',
       titleBefore: 'IA que vive',
       titleAccent: 'contigo',
       titleAfter: 'no por encima de ti.',
       body:
-        'LifeOS es una distribucion Linux nativa para IA para quienes quieren que la inferencia local, la memoria privada y la automatizacion del sistema pertenezcan a su propio hardware. Axi, el ajolote mexicano del proyecto, representa esa idea de computacion soberana y serena.',
+        'LifeOS / Axi es un asistente personal de IA local-first: voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop. Sin nube, sin telemetria. Axi, el ajolote mexicano del proyecto, representa esa idea de computacion soberana y serena.',
       primaryCta: 'Recibir actualizaciones',
       secondaryCta: 'Ver en GitHub',
-      chips: ['Inferencia local', 'Memoria privada', 'Puente con Telegram', 'Codigo abierto'],
+      chips: ['Voz + vision', 'Inferencia local', 'Interprete en tiempo real', 'Privacidad por defecto'],
       signal: 'Senal de Axi',
-      surface: 'Superficie de computacion soberana',
-      prompt: 'life ask "Quien es dueno de mis datos?"',
+      surface: 'Superficie de asistente local-first',
+      prompt: 'axi> "Quien es dueno de mis datos?"',
       response: 'Tu. Local por defecto. Soberano por diseno.',
       memoryTitle: 'Memoria',
       memoryBody:
-        'Tu contexto se queda en tu maquina en vez de convertirse en combustible de entrenamiento para un proveedor en la nube.',
-      operatorTitle: 'Bucle operador',
+        'Tus conversaciones, hechos y notas de reuniones se quedan en SQLite en tu disco — nunca se suben, nunca entrenan el modelo de nadie mas.',
+      operatorTitle: 'Loop del asistente',
       operatorBody:
-        'Voz, automatizacion, interaccion remota y control del sistema se estan construyendo como capacidades nativas.',
+        'Voz, Q&A con pantalla y camara, reuniones e interprete EN→ES en tiempo real corren como servicios nativos en tu maquina.',
       motifLabel: 'Axi / ajolote mexicano',
     },
     proofs: {
       eyebrow: 'Estado actual',
       title: 'Lo que ya funciona hoy',
       intro:
-        'LifeOS aun esta temprano, pero no es imaginario. Estas son las bases que ya existen en el proyecto y empujan la direccion publica hacia adelante.',
+        'Axi aun esta temprano, pero no es imaginario. Estas son capacidades reales corriendo ya en una sola laptop, empujando la direccion publica hacia adelante.',
       items: [
         {
-          label: 'Runtime',
-          title: 'Motor de inferencia local',
+          label: 'Voz',
+          title: 'Asistente de voz Axi',
           description:
-            'LifeOS corre inferencia local con llama.cpp para que la inteligencia permanezca ligada a tu propio hardware.',
-          details: ['Respuestas local-first', 'Integracion al nivel del OS', 'Sin nube por defecto'],
+            'Dictado, Q&A con pantalla y Q&A con camara — primero en espanol, con comandos de voz como “Axi, abre el dashboard”.',
+          details: ['Whisper turbo en GPU', 'Piper TTS', 'Intents de voz al sistema'],
+        },
+        {
+          label: 'Cerebro',
+          title: 'LLMs locales intercambiables',
+          description:
+            'Qwen3.6 35B-A3B (MoE) corre localmente en 12 GB de VRAM via llama.cpp. Un catalogo de 9 modelos multimodales 2026 se cambia desde el dashboard.',
+          details: ['llama.cpp en Blackwell', 'Tuning de parametros por modelo', 'Catalogo de 9 modelos'],
+        },
+        {
+          label: 'Reuniones',
+          title: 'Grabador de reuniones largas',
+          description:
+            'Transcripcion incremental, diarizacion de hablantes y resumenes jerarquicos generados por Qwen — pensado para sesiones de varias horas.',
+          details: ['Diarizacion Resemblyzer + pyannote', 'Capturas de pantalla con dedup phash', 'Buscable desde el dashboard'],
         },
         {
           label: 'Memoria',
-          title: 'Bases de memoria local cifrada',
+          title: 'Memoria local con busqueda full-text',
           description:
-            'El contexto personal esta pensado para permanecer cifrado en reposo y anclado a la maquina que controlas.',
-          details: ['Contexto privado', 'Cifrado en reposo', 'Hecho para recuerdo soberano'],
+            'SQLite + FTS5 guarda historial de conversaciones, hechos extraidos y notas de reuniones — consciente de zona horaria y buscable desde el dashboard.',
+          details: ['SQLite + FTS5', 'Extraccion de hechos', 'Vive en tu disco'],
         },
         {
-          label: 'Control',
-          title: 'Bases del control plane de escritorio',
+          label: 'Interprete',
+          title: 'Interprete EN→ES en tiempo real',
           description:
-            'Un daemon en Rust, APIs locales y superficies de operacion forman la base para automatizacion y control del sistema mas profundos.',
-          details: ['Core en Rust', 'APIs orientadas al sistema', 'Superficie pensada para operar'],
+            'Whisper por chunks + traduccion con Qwen + Piper TTS. Captura audio del sistema via PipeWire null-sink y reproduce espanol en los audifonos en menos de 3 segundos.',
+          details: ['Latencia menor a 3s en modo fluido', 'Captura PipeWire null-sink', 'Sale a audifonos BT'],
         },
         {
-          label: 'Loop remoto',
-          title: 'Interaccion por Telegram hoy',
+          label: 'Game Guard',
+          title: 'Reclamo de VRAM con un click',
           description:
-            'LifeOS ya tiene un puente remoto real para hablar con tu sistema aunque no estes frente al escritorio.',
-          details: ['Notificaciones remotas', 'Alcance movil', 'Bases de puente seguro'],
+            'Libera los 12 GB de VRAM para juegos exigentes como RE Requiem o Cyberpunk RT. Los modelos paran; el tray sigue vivo. Restore regresa todo a la GPU.',
+          details: ['12 GB liberados con un click', 'El tray sobrevive', 'Restore vuelve a GPU'],
         },
       ],
     },
@@ -301,25 +328,25 @@ const COPY = {
       eyebrow: 'Por que LifeOS',
       title: 'Construido para permanecer',
       intro:
-        'LifeOS existe porque no queremos que la inteligencia se convierta en otra capa rentada de la computacion moderna. El sistema operativo mismo tiene que cargar esos valores.',
+        'LifeOS existe porque no queremos que la inteligencia se convierta en otra capa rentada de la computacion moderna. El asistente mismo tiene que cargar esos valores.',
       items: [
         {
           number: '01',
           title: 'IA local-first',
           description:
-            'LifeOS trata la inteligencia en dispositivo como el default, no como el fallback. Tu maquina no deberia depender del datacenter de alguien mas para pensar.',
+            'Axi trata la inteligencia en dispositivo como el default, no como el fallback. Tu laptop no deberia depender del datacenter de alguien mas para pensar.',
         },
         {
           number: '02',
           title: 'Privacidad por defecto',
           description:
-            'La memoria, la automatizacion y el contexto deben vivir bajo tu control. La privacidad no es un extra premium agregado al final.',
+            'Conversaciones, audio, grabaciones de reuniones y memoria se quedan en tu disco. Sin APIs en la nube, sin telemetria, sin combustible de entrenamiento.',
         },
         {
           number: '03',
-          title: 'Sistema operativo nativo para IA',
+          title: 'Un usuario, una laptop',
           description:
-            'LifeOS no es un chatbot montado encima de Linux. Es una direccion de sistema operativo donde inferencia, memoria, voz, vision y automatizacion pertenecen a la capa del OS.',
+            'Sin servidores multi-tenant, sin cuentas, sin flujos de auth. Servicios modulares en Python — voz, cerebro, memoria, dashboard, tray — coordinados por systemd en una sola maquina.',
         },
       ],
     },
@@ -327,37 +354,37 @@ const COPY = {
       eyebrow: 'Por que importa',
       title: 'La nube no deberia ser duena de tu inteligencia.',
       body:
-        'LifeOS esta construyendo otro default: IA local-first, memoria privada y automatizacion que responde a la maquina que posees, no a una plataforma que te renta tu propio futuro.',
+        'Axi esta construyendo otro default: IA local-first, memoria privada, voz y vision que responden a la maquina que posees, no a una plataforma que te renta tu propio futuro.',
       cloudTitle: 'Default de la nube',
       cloudBody:
         'Modelos remotos, lock-in de proveedor, memoria fragmentada y extraccion invisible de datos se vuelven la forma normal de la computacion.',
-      directionTitle: 'Direccion de LifeOS',
+      directionTitle: 'Direccion de Axi',
       directionBody:
-        'Infraestructura open source, inferencia local, superficies auditables de control y un sistema que mantiene tu memoria y tu automatizacion cerca de tu propio hardware.',
+        'Servicios open source en Python, inferencia local en GPUs de consumo, superficies auditables y un asistente que mantiene tu voz, tu vision y tu memoria en tu propia laptop.',
     },
     roadmap: {
-      eyebrow: 'Camino a la beta publica',
-      title: 'Lo que sigue',
+      eyebrow: 'Lo que sigue',
+      title: 'Direccion cercana',
       intro:
-        'La meta cercana no es hype. Es volver el sistema real mas estable, mas usable y mas facil de seguir en publico.',
+        'La meta cercana no es hype. Es volver al asistente real mas pulido, mas multilingue y mas facil de seguir en publico.',
       items: [
         {
           status: 'Activo ahora',
-          title: 'Estabilizar la base de la beta publica',
+          title: 'UI de descarga de modelos con streaming',
           description:
-            'Seguir endureciendo instalacion, arranque, actualizaciones y recuperacion para que LifeOS se sienta confiable en hardware real.',
+            'Barra de progreso en el dashboard para jalar nuevos modelos locales del catalogo de 9, con verificacion de checksum y soporte para reanudar.',
         },
         {
           status: 'En progreso',
-          title: 'Mejorar el control de escritorio accesible',
+          title: 'Evaluacion lado a lado de modelos',
           description:
-            'Hacer crecer el loop de Axi, la automatizacion de escritorio y el control remoto del sistema sin depender de pegamento fragil en la nube.',
+            'Correr dos modelos locales con el mismo prompt y comparar latencia, calidad y huella de VRAM directamente desde el dashboard.',
         },
         {
           status: 'Lo siguiente',
-          title: 'Expandir documentacion publica, demos y onboarding',
+          title: 'Diarizacion V1 y mas intents de voz',
           description:
-            'Hacer que LifeOS sea mas facil de entender, probar y seguir mediante mejores guias, demos y caminos de instalacion.',
+            'Promover la diarizacion con pyannote a default, mas un set mas amplio de comandos de voz y un runtime de OCR que se activa cuando tesseract esta instalado.',
         },
       ],
     },
@@ -365,7 +392,7 @@ const COPY = {
       eyebrow: 'Sigue el proyecto',
       title: 'Recibe actualizaciones',
       intro:
-        'El newsletter y los canales publicos de demos vienen despues. Mientras tanto, GitHub y el roadmap son los lugares canonicos y honestos para seguir LifeOS.',
+        'El newsletter y los canales publicos de demos vienen despues. Mientras tanto, GitHub y el roadmap son los lugares canonicos y honestos para seguir Axi.',
       comingSoonTitle: 'Proximamente',
       comingSoonBody:
         'Los demos publicos en YouTube y Twitch se enlazaran aqui cuando exista una cadencia real de transmisiones.',
@@ -379,7 +406,7 @@ const COPY = {
         {
           title: 'Lee el roadmap',
           description:
-            'El roadmap publico explica el estado real del proyecto, lo que esta activo ahora y lo que sigue.',
+            'El documento PRD-NEXT explica el estado real del asistente, lo que esta activo ahora y lo que sigue.',
           href: '',
         },
         {
@@ -394,19 +421,19 @@ const COPY = {
       eyebrow: 'Apoya LifeOS',
       title: 'Ayuda a convertir un prototipo privado en infraestructura publica.',
       intro:
-        'LifeOS se esta construyendo en abierto. El apoyo temprano ayuda a financiar el trabajo para pasar de bases prometedoras a una beta publica estable para personas que se preocupan por la computacion soberana.',
+        'LifeOS / Axi se esta construyendo en abierto. El apoyo temprano ayuda a financiar el trabajo para pasar de bases prometedoras a un asistente local-first pulido para personas que se preocupan por la computacion soberana.',
       sponsor: 'Patrocinar en GitHub',
       star: 'Dar estrella al repo',
     },
     footer: {
       description:
-        'Linux nativo para IA desde Mexico. Local-first, privacy-first y construido en publico alrededor de la idea de que tu inteligencia debe pertenecerte.',
+        'Asistente personal de IA local-first desde Mexico. Voz, vision, memoria e interprete en tiempo real — corriendo 100% en tu laptop, construido en publico.',
       project: 'Proyecto',
       brandAndLicense: 'Marca y licencia',
       github: 'GitHub',
       roadmap: 'Roadmap',
       siteSource: 'Codigo del sitio',
-      visualSystem: 'Sistema visual de Axi',
+      visualSystem: 'README del proyecto',
       license: 'Licencia',
       sponsors: 'GitHub Sponsors',
     },
@@ -466,7 +493,7 @@ function useDocumentMetadata(locale: Locale) {
           name: 'LifeOS',
           description: meta.softwareDescription,
           codeRepository: LINKS.github,
-          programmingLanguage: ['Rust', 'TypeScript', 'Shell'],
+          programmingLanguage: ['Python', 'TypeScript', 'Shell'],
           runtimePlatform: 'Linux',
           license: LINKS.license,
         },
