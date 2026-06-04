@@ -622,11 +622,11 @@ function Navbar({
         >
           LifeOS
           <span
-            aria-label="LifeOS is in beta"
+            aria-label="LifeOS is in alpha"
             className="rounded-full border border-amber-400/50 bg-amber-400/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-300"
-            title="LifeOS is in beta — expect fast iteration and occasional regressions"
+            title="LifeOS is in alpha — expect fast iteration and occasional regressions"
           >
-            Beta
+            Alpha
           </span>
         </a>
 
