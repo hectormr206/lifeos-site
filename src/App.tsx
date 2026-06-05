@@ -21,17 +21,17 @@ const LINKS = {
 const COPY = {
   en: {
     meta: {
-      title: 'LifeOS / Axi | Local-first AI personal assistant',
+      title: 'LifeOS | Local-first sovereign life platform — powered by Axi',
       description:
-        'LifeOS / Axi is a local-first AI personal assistant. Voice, vision, memory, and a real-time interpreter, running 100% on your laptop.',
+        'LifeOS is a local-first life platform. Install it and talk to Axi — the on-device AI agent with voice, vision, memory, and a real-time interpreter. No cloud, no telemetry.',
       ogDescription:
-        'A local-first AI personal assistant with voice, vision, memory, and a real-time interpreter — running 100% on your laptop. No cloud, no telemetry.',
+        'LifeOS is the local-first platform where your life lives. Axi — the on-device AI agent inside it — brings voice, vision, memory, and a real-time interpreter. 100% on your laptop.',
       twitterDescription:
-        'LifeOS / Axi is a local-first AI personal assistant. Voice, vision, memory, and a real-time interpreter, running on your laptop.',
+        'Install LifeOS. Talk to Axi. A local-first life platform with an on-device AI agent — voice, vision, memory, and a real-time interpreter, running on your laptop.',
       siteDescription:
-        'Local-first AI personal assistant from Mexico. Runs on your laptop. No cloud, no telemetry.',
+        'Local-first sovereign life platform from Mexico. Install LifeOS, talk to Axi. Runs on your laptop. No cloud, no telemetry.',
       softwareDescription:
-        'A local-first AI personal assistant with voice, vision, memory, meeting recorder, and a real-time interpreter — designed to run entirely on a single laptop.',
+        'LifeOS is a local-first life platform housing Axi, an on-device AI agent with voice, vision, memory, meeting recorder, and a real-time interpreter — designed to run entirely on a single laptop.',
       locale: 'en_US',
       htmlLang: 'en',
     },
@@ -45,23 +45,23 @@ const COPY = {
       language: 'Language',
     },
     hero: {
-      eyebrow: 'AI assistant from Mexico',
-      titleBefore: 'AI that lives',
-      titleAccent: 'with you',
-      titleAfter: 'not above you.',
+      eyebrow: 'Local-first life platform from Mexico',
+      titleBefore: 'Your life,',
+      titleAccent: 'your machine',
+      titleAfter: 'not their cloud.',
       body:
-        'LifeOS / Axi is a local-first AI personal assistant: voice, vision, memory, and a real-time interpreter, running 100% on your laptop. No cloud, no telemetry. Axi, the project’s Mexican axolotl, carries that idea of calm, sovereign computing.',
+        'LifeOS is the local-first platform where your life lives — encrypted store, life domains, dashboard, and structured intelligence, all on your laptop. Axi is the agent inside it: the Mexican axolotl who sees, listens, remembers, and answers. Install LifeOS. Talk to Axi.',
       primaryCta: 'Install on CachyOS',
       secondaryCta: 'View on GitHub',
       chips: ['Voice + vision', 'Local inference', 'Real-time interpreter', 'Privacy by default'],
-      signal: 'Axi signal',
-      surface: 'Local-first assistant surface',
+      signal: 'Axi · on-device agent',
+      surface: 'LifeOS · local-first platform',
       prompt: 'axi> "Who owns my data?"',
       response: 'You do. Local by default. Sovereign by design.',
       memoryTitle: 'Memory',
       memoryBody:
-        'Your conversations, facts, and meeting notes stay in SQLite on your disk — never uploaded, never used to train anyone else’s model.',
-      operatorTitle: 'Assistant loop',
+        'Your conversations, facts, and meeting notes stay in SQLite on your disk — never uploaded, never used to train anyone else\'s model.',
+      operatorTitle: 'Axi agent loop',
       operatorBody:
         'Voice, screen and camera Q&A, meetings, and a real-time EN→ES interpreter run as native services on your machine.',
       motifLabel: 'Axi / Mexican axolotl',
@@ -149,13 +149,13 @@ const COPY = {
       eyebrow: 'Why LifeOS',
       title: 'Built for permanence',
       intro:
-        'LifeOS exists because we do not want intelligence to become another rented layer of modern computing. The assistant itself has to carry the values.',
+        'LifeOS exists because we do not want intelligence to become another rented layer of modern computing. The platform has to carry those values — and so does Axi, the agent living inside it.',
       items: [
         {
           number: '01',
           title: 'Local-first AI',
           description:
-            'Axi treats on-device intelligence as the default, not the fallback. Your laptop should not depend on someone else’s datacenter to think.',
+            'LifeOS treats on-device intelligence as the default, not the fallback. Your laptop should not depend on someone else\'s datacenter to think.',
         },
         {
           number: '02',
@@ -175,13 +175,13 @@ const COPY = {
       eyebrow: 'Why this matters',
       title: 'The cloud should not be the owner of your intelligence.',
       body:
-        'Axi is building a different default: local-first AI, private memory, voice and vision that answer to the machine you own instead of a platform that rents your future back to you.',
+        'LifeOS is a different default: a sovereign platform where your life domains, memory, and AI agent run entirely on hardware you own — not on a service that rents your future back to you.',
       cloudTitle: 'Cloud default',
       cloudBody:
         'Remote models, vendor lock-in, fragmented memory, and invisible data extraction become the normal shape of computing.',
-      directionTitle: 'Axi direction',
+      directionTitle: 'LifeOS direction',
       directionBody:
-        'Open source Python services, local inference on consumer GPUs, auditable surfaces, and an assistant that keeps your voice, vision, and memory on your own laptop.',
+        'Open source Python services, local inference on consumer GPUs, auditable surfaces, and Axi — an agent that keeps your voice, vision, and memory on your own laptop.',
     },
     roadmap: {
       eyebrow: 'What comes next',
@@ -242,13 +242,13 @@ const COPY = {
       eyebrow: 'Support LifeOS',
       title: 'Help turn a private prototype into public infrastructure.',
       intro:
-        'LifeOS / Axi is being built in the open. Early support helps fund the work needed to move from promising foundations to a polished local-first assistant for people who care about sovereign computing.',
+        'LifeOS is being built in the open. Early support helps fund the work needed to move from promising foundations to a polished local-first platform — and a better Axi — for people who care about sovereign computing.',
       sponsor: 'Sponsor on GitHub',
       star: 'Star the repo',
     },
     footer: {
       description:
-        'Local-first AI personal assistant from Mexico. Voice, vision, memory, and a real-time interpreter — running 100% on your laptop, built in public.',
+        'Local-first sovereign life platform from Mexico. Install LifeOS. Talk to Axi. Voice, vision, memory, and a real-time interpreter — running 100% on your laptop, built in public.',
       project: 'Project',
       brandAndLicense: 'Brand and license',
       github: 'GitHub',
@@ -261,17 +261,17 @@ const COPY = {
   },
   es: {
     meta: {
-      title: 'LifeOS / Axi | Asistente personal de IA local-first',
+      title: 'LifeOS | Plataforma de vida local-first — con Axi adentro',
       description:
-        'LifeOS / Axi es un asistente personal de IA local-first. Voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop.',
+        'LifeOS es una plataforma de vida local-first. Instalala y habla con Axi — el agente de IA en dispositivo con voz, vision, memoria e interprete en tiempo real. Sin nube, sin telemetria.',
       ogDescription:
-        'Un asistente personal de IA local-first con voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop. Sin nube, sin telemetria.',
+        'LifeOS es la plataforma local-first donde vive tu vida. Axi — el agente de IA en dispositivo dentro de ella — trae voz, vision, memoria e interprete en tiempo real. 100% en tu laptop.',
       twitterDescription:
-        'LifeOS / Axi es un asistente personal de IA local-first. Voz, vision, memoria y un interprete en tiempo real corriendo en tu laptop.',
+        'Instala LifeOS. Habla con Axi. Una plataforma de vida local-first con agente de IA en dispositivo — voz, vision, memoria e interprete en tiempo real, corriendo en tu laptop.',
       siteDescription:
-        'Asistente personal de IA local-first desde Mexico. Corre en tu laptop. Sin nube, sin telemetria.',
+        'Plataforma de vida soberana local-first desde Mexico. Instala LifeOS, habla con Axi. Corre en tu laptop. Sin nube, sin telemetria.',
       softwareDescription:
-        'Un asistente personal de IA local-first con voz, vision, memoria, grabador de reuniones e interprete en tiempo real — disenado para correr completamente en una sola laptop.',
+        'LifeOS es una plataforma de vida local-first que alberga a Axi, un agente de IA en dispositivo con voz, vision, memoria, grabador de reuniones e interprete en tiempo real — disenado para correr completamente en una sola laptop.',
       locale: 'es_MX',
       htmlLang: 'es-MX',
     },
@@ -285,23 +285,23 @@ const COPY = {
       language: 'Idioma',
     },
     hero: {
-      eyebrow: 'Asistente de IA desde Mexico',
-      titleBefore: 'IA que vive',
-      titleAccent: 'contigo',
-      titleAfter: 'no por encima de ti.',
+      eyebrow: 'Plataforma de vida local-first desde Mexico',
+      titleBefore: 'Tu vida,',
+      titleAccent: 'tu maquina',
+      titleAfter: 'no su nube.',
       body:
-        'LifeOS / Axi es un asistente personal de IA local-first: voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop. Sin nube, sin telemetria. Axi, el ajolote mexicano del proyecto, representa esa idea de computacion soberana y serena.',
+        'LifeOS es la plataforma local-first donde vive tu vida — almacen cifrado, dominios de vida, dashboard e inteligencia estructurada, todo en tu laptop. Axi es el agente adentro: el ajolote mexicano que ve, escucha, recuerda y responde. Instala LifeOS. Habla con Axi.',
       primaryCta: 'Instalar en CachyOS',
       secondaryCta: 'Ver en GitHub',
       chips: ['Voz + vision', 'Inferencia local', 'Interprete en tiempo real', 'Privacidad por defecto'],
-      signal: 'Senal de Axi',
-      surface: 'Superficie de asistente local-first',
+      signal: 'Axi · agente en dispositivo',
+      surface: 'LifeOS · plataforma local-first',
       prompt: 'axi> "Quien es dueno de mis datos?"',
       response: 'Tu. Local por defecto. Soberano por diseno.',
       memoryTitle: 'Memoria',
       memoryBody:
         'Tus conversaciones, hechos y notas de reuniones se quedan en SQLite en tu disco — nunca se suben, nunca entrenan el modelo de nadie mas.',
-      operatorTitle: 'Loop del asistente',
+      operatorTitle: 'Loop del agente Axi',
       operatorBody:
         'Voz, Q&A con pantalla y camara, reuniones e interprete EN→ES en tiempo real corren como servicios nativos en tu maquina.',
       motifLabel: 'Axi / ajolote mexicano',
@@ -389,13 +389,13 @@ const COPY = {
       eyebrow: 'Por que LifeOS',
       title: 'Construido para permanecer',
       intro:
-        'LifeOS existe porque no queremos que la inteligencia se convierta en otra capa rentada de la computacion moderna. El asistente mismo tiene que cargar esos valores.',
+        'LifeOS existe porque no queremos que la inteligencia se convierta en otra capa rentada de la computacion moderna. La plataforma tiene que cargar esos valores — y Axi, el agente que vive dentro de ella, tambien.',
       items: [
         {
           number: '01',
           title: 'IA local-first',
           description:
-            'Axi trata la inteligencia en dispositivo como el default, no como el fallback. Tu laptop no deberia depender del datacenter de alguien mas para pensar.',
+            'LifeOS trata la inteligencia en dispositivo como el default, no como el fallback. Tu laptop no deberia depender del datacenter de alguien mas para pensar.',
         },
         {
           number: '02',
@@ -415,13 +415,13 @@ const COPY = {
       eyebrow: 'Por que importa',
       title: 'La nube no deberia ser duena de tu inteligencia.',
       body:
-        'Axi esta construyendo otro default: IA local-first, memoria privada, voz y vision que responden a la maquina que posees, no a una plataforma que te renta tu propio futuro.',
+        'LifeOS es otro default: una plataforma soberana donde tus dominios de vida, tu memoria y tu agente de IA corren completamente en hardware que posees — no en un servicio que te renta tu propio futuro.',
       cloudTitle: 'Default de la nube',
       cloudBody:
         'Modelos remotos, lock-in de proveedor, memoria fragmentada y extraccion invisible de datos se vuelven la forma normal de la computacion.',
-      directionTitle: 'Direccion de Axi',
+      directionTitle: 'Direccion de LifeOS',
       directionBody:
-        'Servicios open source en Python, inferencia local en GPUs de consumo, superficies auditables y un asistente que mantiene tu voz, tu vision y tu memoria en tu propia laptop.',
+        'Servicios open source en Python, inferencia local en GPUs de consumo, superficies auditables y Axi — un agente que mantiene tu voz, tu vision y tu memoria en tu propia laptop.',
     },
     roadmap: {
       eyebrow: 'Lo que sigue',
@@ -482,13 +482,13 @@ const COPY = {
       eyebrow: 'Apoya LifeOS',
       title: 'Ayuda a convertir un prototipo privado en infraestructura publica.',
       intro:
-        'LifeOS / Axi se esta construyendo en abierto. El apoyo temprano ayuda a financiar el trabajo para pasar de bases prometedoras a un asistente local-first pulido para personas que se preocupan por la computacion soberana.',
+        'LifeOS se esta construyendo en abierto. El apoyo temprano ayuda a financiar el trabajo para pasar de bases prometedoras a una plataforma local-first pulida — y un Axi mejor — para personas que se preocupan por la computacion soberana.',
       sponsor: 'Patrocinar en GitHub',
       star: 'Dar estrella al repo',
     },
     footer: {
       description:
-        'Asistente personal de IA local-first desde Mexico. Voz, vision, memoria e interprete en tiempo real — corriendo 100% en tu laptop, construido en publico.',
+        'Plataforma de vida soberana local-first desde Mexico. Instala LifeOS. Habla con Axi. Voz, vision, memoria e interprete en tiempo real — corriendo 100% en tu laptop, construido en publico.',
       project: 'Proyecto',
       brandAndLicense: 'Marca y licencia',
       github: 'GitHub',
