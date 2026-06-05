@@ -15,6 +15,7 @@ const LINKS = {
   branding: 'https://github.com/hectormr206/lifeos/blob/main/README.md',
   license: 'https://github.com/hectormr206/lifeos/blob/main/LICENSE',
   sponsors: 'https://github.com/sponsors/hectormr206',
+  installGuide: 'https://github.com/hectormr206/lifeos/blob/main/README.md#install',
 };
 
 const COPY = {
@@ -37,6 +38,7 @@ const COPY = {
     nav: {
       vision: 'Vision',
       whatWorks: 'What Works',
+      install: 'Install',
       roadmap: 'Roadmap',
       updates: 'Updates',
       support: 'Support LifeOS',
@@ -49,7 +51,7 @@ const COPY = {
       titleAfter: 'not above you.',
       body:
         'LifeOS / Axi is a local-first AI personal assistant: voice, vision, memory, and a real-time interpreter, running 100% on your laptop. No cloud, no telemetry. Axi, the project’s Mexican axolotl, carries that idea of calm, sovereign computing.',
-      primaryCta: 'Get updates',
+      primaryCta: 'Install on CachyOS',
       secondaryCta: 'View on GitHub',
       chips: ['Voice + vision', 'Local inference', 'Real-time interpreter', 'Privacy by default'],
       signal: 'Axi signal',
@@ -63,6 +65,35 @@ const COPY = {
       operatorBody:
         'Voice, screen and camera Q&A, meetings, and a real-time EN→ES interpreter run as native services on your machine.',
       motifLabel: 'Axi / Mexican axolotl',
+    },
+    install: {
+      eyebrow: 'Install',
+      title: 'Run Axi on your own machine',
+      intro:
+        'Axi is open source and installs on top of CachyOS. One idempotent script pulls the system packages, the Python environment, the local models (with consent for the large one), and the systemd services — no cloud account, no telemetry.',
+      alpha: 'Alpha · CachyOS + NVIDIA only for now',
+      requirements: [
+        {
+          label: 'OS',
+          value:
+            'CachyOS (Arch-based) with KDE Plasma + PipeWire — the reference and only tested target today. More Arch-based distros come later.',
+        },
+        {
+          label: 'GPU',
+          value:
+            'NVIDIA with CUDA and 12 GB+ VRAM. The brain is an MoE model offloaded with --cpu-moe so it fits in 12 GB.',
+        },
+        {label: 'Disk', value: '~35 GB for the default model set and the Python virtualenv.'},
+      ],
+      terminalLabel: 'tty1 / install',
+      steps: [
+        'git clone https://github.com/hectormr206/lifeos.git ~/LifeOS/lifeos',
+        'cd ~/LifeOS/lifeos',
+        './install.sh',
+      ],
+      openHint: '# then open http://127.0.0.1:8081 — re-check anytime with ./install.sh --check',
+      ctaPrimary: 'Clone on GitHub',
+      ctaSecondary: 'Read the install guide',
     },
     proofs: {
       eyebrow: 'Current status',
@@ -247,6 +278,7 @@ const COPY = {
     nav: {
       vision: 'Vision',
       whatWorks: 'Lo real hoy',
+      install: 'Instalar',
       roadmap: 'Roadmap',
       updates: 'Actualizaciones',
       support: 'Apoyar LifeOS',
@@ -259,7 +291,7 @@ const COPY = {
       titleAfter: 'no por encima de ti.',
       body:
         'LifeOS / Axi es un asistente personal de IA local-first: voz, vision, memoria y un interprete en tiempo real, corriendo 100% en tu laptop. Sin nube, sin telemetria. Axi, el ajolote mexicano del proyecto, representa esa idea de computacion soberana y serena.',
-      primaryCta: 'Recibir actualizaciones',
+      primaryCta: 'Instalar en CachyOS',
       secondaryCta: 'Ver en GitHub',
       chips: ['Voz + vision', 'Inferencia local', 'Interprete en tiempo real', 'Privacidad por defecto'],
       signal: 'Senal de Axi',
@@ -273,6 +305,35 @@ const COPY = {
       operatorBody:
         'Voz, Q&A con pantalla y camara, reuniones e interprete EN→ES en tiempo real corren como servicios nativos en tu maquina.',
       motifLabel: 'Axi / ajolote mexicano',
+    },
+    install: {
+      eyebrow: 'Instalar',
+      title: 'Corre Axi en tu propia maquina',
+      intro:
+        'Axi es open source y se instala sobre CachyOS. Un script idempotente trae los paquetes del sistema, el entorno de Python, los modelos locales (con consentimiento para el grande) y los servicios de systemd — sin cuenta en la nube, sin telemetria.',
+      alpha: 'Alpha · por ahora solo CachyOS + NVIDIA',
+      requirements: [
+        {
+          label: 'SO',
+          value:
+            'CachyOS (basado en Arch) con KDE Plasma + PipeWire — la referencia y el unico objetivo probado hoy. Mas distros basadas en Arch vienen despues.',
+        },
+        {
+          label: 'GPU',
+          value:
+            'NVIDIA con CUDA y 12 GB+ de VRAM. El cerebro es un modelo MoE descargado con --cpu-moe para caber en 12 GB.',
+        },
+        {label: 'Disco', value: '~35 GB para el set de modelos por defecto y el entorno virtual de Python.'},
+      ],
+      terminalLabel: 'tty1 / install',
+      steps: [
+        'git clone https://github.com/hectormr206/lifeos.git ~/LifeOS/lifeos',
+        'cd ~/LifeOS/lifeos',
+        './install.sh',
+      ],
+      openHint: '# luego abre http://127.0.0.1:8081 — reverifica cuando quieras con ./install.sh --check',
+      ctaPrimary: 'Clonar en GitHub',
+      ctaSecondary: 'Leer la guia de instalacion',
     },
     proofs: {
       eyebrow: 'Estado actual',
@@ -627,6 +688,7 @@ function Navbar({
         <div className="hidden items-center gap-7 md:flex">
           <NavLink href="#vision">{copy.nav.vision}</NavLink>
           <NavLink href="#what-works">{copy.nav.whatWorks}</NavLink>
+          <NavLink href="#install">{copy.nav.install}</NavLink>
           <NavLink href="#roadmap">{copy.nav.roadmap}</NavLink>
           <NavLink href={LINKS.github} external>
             GitHub
@@ -676,7 +738,7 @@ function Hero({locale}: {locale: Locale}) {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
-              href="#updates"
+              href="#install"
             >
               {copy.hero.primaryCta}
             </a>
@@ -759,6 +821,82 @@ function Hero({locale}: {locale: Locale}) {
             </div>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Install({locale}: {locale: Locale}) {
+  const copy = COPY[locale].install;
+
+  return (
+    <section className="scroll-mt-24 py-24" id="install">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <div className="max-w-3xl">
+          <SectionEyebrow>{copy.eyebrow}</SectionEyebrow>
+          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+            {copy.title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.intro}</p>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber-400/45 bg-amber-400/10 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-amber-300" />
+            <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-amber-300">
+              {copy.alpha}
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid content-start gap-3">
+            {copy.requirements.map((req) => (
+              <div className="rounded-2xl border border-outline/20 bg-surface/70 p-5" key={req.label}>
+                <p className="font-mono text-[0.66rem] uppercase tracking-[0.22em] text-primary">
+                  {req.label}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-text">{req.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="overflow-hidden rounded-[1.5rem] border border-outline/25 bg-background/85 shadow-[0_30px_80px_rgba(0,0,0,0.38)]">
+            <div className="flex items-center gap-2 border-b border-outline/20 px-5 py-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-secondary/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
+              <span className="ml-auto font-mono text-[0.64rem] uppercase tracking-[0.22em] text-text-muted">
+                {copy.terminalLabel}
+              </span>
+            </div>
+            <div className="space-y-2 p-6 font-mono text-sm leading-7">
+              {copy.steps.map((step) => (
+                <p className="break-all text-text" key={step}>
+                  <span className="select-none text-primary">$</span> {step}
+                </p>
+              ))}
+              <p className="break-all pt-2 text-text-muted">{copy.openHint}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
+            href={LINKS.github}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <Github className="h-4 w-4" />
+            {copy.ctaPrimary}
+          </a>
+          <a
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-outline/45 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5"
+            href={LINKS.installGuide}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {copy.ctaSecondary}
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -1121,6 +1259,7 @@ export default function App() {
       <Navbar locale={locale} onLocaleChange={setLocale} />
       <main>
         <Hero locale={locale} />
+        <Install locale={locale} />
         <Proofs locale={locale} />
         <Principles locale={locale} />
         <WhyItMatters locale={locale} />
