@@ -36,7 +36,7 @@ const COPY = {
       htmlLang: 'en',
     },
     nav: {
-      vision: 'Vision',
+      vision: 'Why',
       whatWorks: 'What Works',
       install: 'Install',
       roadmap: 'Roadmap',
@@ -58,9 +58,9 @@ const COPY = {
       surface: 'LifeOS · local-first platform',
       prompt: 'axi> "Who owns my data?"',
       response: 'You do. Local by default. Sovereign by design.',
-      memoryTitle: 'Memory',
+      memoryTitle: 'Memory (teaser)',
       memoryBody:
-        'Your conversations, facts, and meeting notes stay in SQLite on your disk — never uploaded, never used to train anyone else\'s model.',
+        'Facts, conversation history, and meeting notes in SQLite on your disk — recalled by Axi, never uploaded.',
       operatorTitle: 'Axi agent loop',
       operatorBody:
         'Voice, screen and camera Q&A, meetings, and a real-time EN→ES interpreter run as native services on your machine.',
@@ -68,9 +68,9 @@ const COPY = {
     },
     install: {
       eyebrow: 'Install',
-      title: 'Run Axi on your own machine',
+      title: 'Run LifeOS on your own machine',
       intro:
-        'Axi is open source and installs on top of CachyOS. One idempotent script pulls the system packages, the Python environment, the local models (with consent for the large one), and the systemd services — no cloud account, no telemetry.',
+        'LifeOS is open source and installs on CachyOS. One idempotent script pulls the system packages, the Python environment, the local models (with consent for the large one), and the systemd services — no cloud account, no telemetry.',
       alpha: 'Alpha · CachyOS + NVIDIA only for now',
       requirements: [
         {
@@ -85,7 +85,7 @@ const COPY = {
         },
         {label: 'Disk', value: '~35 GB for the default model set and the Python virtualenv.'},
       ],
-      terminalLabel: 'tty1 / install',
+      terminalLabel: 'axi@lifeos',
       steps: [
         'git clone https://github.com/hectormr206/lifeos.git ~/LifeOS/lifeos',
         'cd ~/LifeOS/lifeos',
@@ -99,13 +99,15 @@ const COPY = {
       eyebrow: 'Current status',
       title: 'What works today',
       intro:
-        'Axi is still early, but not imaginary. These are real capabilities already running on a single laptop, driving the public direction forward.',
-      items: [
+        'LifeOS is still early, but not imaginary. These are real capabilities already running on a single laptop, driving the public direction forward.',
+      axiGroupHeading: 'Axi — the agent',
+      platformGroupHeading: 'LifeOS — the platform',
+      axiItems: [
         {
           label: 'Voice',
           title: 'Axi voice assistant',
           description:
-            'Dictation, Q&A with screen, and Q&A with camera — Spanish-first, with voice commands like “Axi, abre el dashboard”.',
+            'Dictation, Q&A with screen, and Q&A with camera — Spanish-first, with voice commands like "Axi, abre el dashboard".',
           details: ['Whisper turbo on GPU', 'Piper TTS', 'Voice intents to the OS'],
         },
         {
@@ -144,13 +146,54 @@ const COPY = {
           details: ['One-click free 12 GB', 'Tray survives reclaim', 'Restore returns to GPU'],
         },
       ],
+      platformItems: [
+        {
+          label: 'Health',
+          title: 'Health domain',
+          description: 'Log entries and trends, on your disk.',
+          details: ['Entries & trend log', 'Local SQLite storage'],
+        },
+        {
+          label: 'Finance',
+          title: 'Finance domain',
+          description: 'Entries, summaries, and guided reflection on impulsive spending.',
+          details: ['Spending entries', 'Guided reflection', 'Local summaries'],
+        },
+        {
+          label: 'Relationships',
+          title: 'Relationships domain',
+          description: 'People and the interactions you want to stay on top of.',
+          details: ['Contact notes', 'Interaction log'],
+        },
+        {
+          label: 'Reminders',
+          title: 'Reminders domain',
+          description: 'Scheduled, with web-push notifications.',
+          details: ['Scheduled reminders', 'Web-push notifications'],
+        },
+        {
+          label: 'Exercise',
+          title: 'Exercise domain',
+          description: 'Sessions and summaries.',
+          details: ['Session log', 'Auto summaries'],
+        },
+        {
+          label: 'Insights',
+          title: 'Cross-domain insights',
+          description:
+            'Cross-domain correlations — e.g. poor sleep leads to impulsive purchases — in a daily/weekly digest.',
+          details: ['Cross-domain correlations', 'Daily/weekly digest'],
+        },
+      ],
     },
-    principles: {
-      eyebrow: 'Why LifeOS',
-      title: 'Built for permanence',
-      intro:
+    why: {
+      eyebrow: 'Why this matters',
+      title: 'The cloud should not be the owner of your intelligence.',
+      body:
+        'LifeOS is a different default: a sovereign platform where your life domains, memory, and AI agent run entirely on hardware you own — not on a service that rents your future back to you.',
+      principlesIntro:
         'LifeOS exists because we do not want intelligence to become another rented layer of modern computing. The platform has to carry those values — and so does Axi, the agent living inside it.',
-      items: [
+      principles: [
         {
           number: '01',
           title: 'Local-first AI',
@@ -171,23 +214,11 @@ const COPY = {
         },
       ],
     },
-    matters: {
-      eyebrow: 'Why this matters',
-      title: 'The cloud should not be the owner of your intelligence.',
-      body:
-        'LifeOS is a different default: a sovereign platform where your life domains, memory, and AI agent run entirely on hardware you own — not on a service that rents your future back to you.',
-      cloudTitle: 'Cloud default',
-      cloudBody:
-        'Remote models, vendor lock-in, fragmented memory, and invisible data extraction become the normal shape of computing.',
-      directionTitle: 'LifeOS direction',
-      directionBody:
-        'Open source Python services, local inference on consumer GPUs, auditable surfaces, and Axi — an agent that keeps your voice, vision, and memory on your own laptop.',
-    },
     roadmap: {
       eyebrow: 'What comes next',
       title: 'Near-term direction',
       intro:
-        'The near-term goal is not hype. It is to make the real assistant more polished, more multilingual, and easier to follow in public.',
+        'The near-term goal is not hype. It is to make the real platform and its agent more polished, more multilingual, and easier to follow in public.',
       items: [
         {
           status: 'Active now',
@@ -213,7 +244,7 @@ const COPY = {
       eyebrow: 'Follow the project',
       title: 'Get updates',
       intro:
-        'The newsletter and public demo channels are opening next. Until then, GitHub and the roadmap are the honest, canonical places to track Axi.',
+        'The newsletter and public demo channels are opening next. Until then, GitHub and the roadmap are the honest, canonical places to track LifeOS and Axi.',
       comingSoonTitle: 'Coming soon',
       comingSoonBody:
         'Public demos on YouTube and Twitch will be linked here once the first broadcast cadence is live.',
@@ -227,7 +258,7 @@ const COPY = {
         {
           title: 'Read the roadmap',
           description:
-            'The PRD-NEXT doc explains the real state of the assistant, what is active now, and what comes next.',
+            'The PRD-NEXT doc explains the real state of the platform, what is active now, and what comes next.',
           href: '',
         },
         {
@@ -276,7 +307,7 @@ const COPY = {
       htmlLang: 'es-MX',
     },
     nav: {
-      vision: 'Vision',
+      vision: 'Por que',
       whatWorks: 'Lo real hoy',
       install: 'Instalar',
       roadmap: 'Roadmap',
@@ -298,9 +329,9 @@ const COPY = {
       surface: 'LifeOS · plataforma local-first',
       prompt: 'axi> "Quien es dueno de mis datos?"',
       response: 'Tu. Local por defecto. Soberano por diseno.',
-      memoryTitle: 'Memoria',
+      memoryTitle: 'Memoria (adelanto)',
       memoryBody:
-        'Tus conversaciones, hechos y notas de reuniones se quedan en SQLite en tu disco — nunca se suben, nunca entrenan el modelo de nadie mas.',
+        'Hechos, historial de conversaciones y notas de reuniones en SQLite en tu disco — recordados por Axi, nunca subidos.',
       operatorTitle: 'Loop del agente Axi',
       operatorBody:
         'Voz, Q&A con pantalla y camara, reuniones e interprete EN→ES en tiempo real corren como servicios nativos en tu maquina.',
@@ -308,9 +339,9 @@ const COPY = {
     },
     install: {
       eyebrow: 'Instalar',
-      title: 'Corre Axi en tu propia maquina',
+      title: 'Corre LifeOS en tu propia maquina',
       intro:
-        'Axi es open source y se instala sobre CachyOS. Un script idempotente trae los paquetes del sistema, el entorno de Python, los modelos locales (con consentimiento para el grande) y los servicios de systemd — sin cuenta en la nube, sin telemetria.',
+        'LifeOS es open source y se instala sobre CachyOS. Un script idempotente trae los paquetes del sistema, el entorno de Python, los modelos locales (con consentimiento para el grande) y los servicios de systemd — sin cuenta en la nube, sin telemetria.',
       alpha: 'Alpha · por ahora solo CachyOS + NVIDIA',
       requirements: [
         {
@@ -325,7 +356,7 @@ const COPY = {
         },
         {label: 'Disco', value: '~35 GB para el set de modelos por defecto y el entorno virtual de Python.'},
       ],
-      terminalLabel: 'tty1 / install',
+      terminalLabel: 'axi@lifeos',
       steps: [
         'git clone https://github.com/hectormr206/lifeos.git ~/LifeOS/lifeos',
         'cd ~/LifeOS/lifeos',
@@ -339,13 +370,15 @@ const COPY = {
       eyebrow: 'Estado actual',
       title: 'Lo que ya funciona hoy',
       intro:
-        'Axi aun esta temprano, pero no es imaginario. Estas son capacidades reales corriendo ya en una sola laptop, empujando la direccion publica hacia adelante.',
-      items: [
+        'LifeOS aun esta temprano, pero no es imaginario. Estas son capacidades reales corriendo ya en una sola laptop, empujando la direccion publica hacia adelante.',
+      axiGroupHeading: 'Axi — el agente',
+      platformGroupHeading: 'LifeOS — la plataforma',
+      axiItems: [
         {
           label: 'Voz',
           title: 'Asistente de voz Axi',
           description:
-            'Dictado, Q&A con pantalla y Q&A con camara — primero en espanol, con comandos de voz como “Axi, abre el dashboard”.',
+            'Dictado, Q&A con pantalla y Q&A con camara — primero en espanol, con comandos de voz como "Axi, abre el dashboard".',
           details: ['Whisper turbo en GPU', 'Piper TTS', 'Intents de voz al sistema'],
         },
         {
@@ -384,13 +417,54 @@ const COPY = {
           details: ['12 GB liberados con un click', 'El tray sobrevive', 'Restore vuelve a GPU'],
         },
       ],
+      platformItems: [
+        {
+          label: 'Salud',
+          title: 'Dominio Salud',
+          description: 'Registros y tendencias, en tu disco.',
+          details: ['Registro de entradas', 'Almacenamiento local SQLite'],
+        },
+        {
+          label: 'Finanzas',
+          title: 'Dominio Finanzas',
+          description: 'Entradas, resumenes y reflexion guiada sobre gasto impulsivo.',
+          details: ['Entradas de gasto', 'Reflexion guiada', 'Resumenes locales'],
+        },
+        {
+          label: 'Relaciones',
+          title: 'Dominio Relaciones',
+          description: 'Personas e interacciones que quieres seguir.',
+          details: ['Notas de contacto', 'Registro de interacciones'],
+        },
+        {
+          label: 'Recordatorios',
+          title: 'Dominio Recordatorios',
+          description: 'Programados, con notificaciones web-push.',
+          details: ['Recordatorios programados', 'Notificaciones web-push'],
+        },
+        {
+          label: 'Ejercicio',
+          title: 'Dominio Ejercicio',
+          description: 'Sesiones y resumenes.',
+          details: ['Registro de sesiones', 'Resumenes automaticos'],
+        },
+        {
+          label: 'Insights',
+          title: 'Insights cross-dominio',
+          description:
+            'Correlaciones cross-dominio — ej. mal sueno lleva a compras impulsivas — en un digest diario/semanal.',
+          details: ['Correlaciones cross-dominio', 'Digest diario/semanal'],
+        },
+      ],
     },
-    principles: {
-      eyebrow: 'Por que LifeOS',
-      title: 'Construido para permanecer',
-      intro:
+    why: {
+      eyebrow: 'Por que importa',
+      title: 'La nube no deberia ser duena de tu inteligencia.',
+      body:
+        'LifeOS es otro default: una plataforma soberana donde tus dominios de vida, tu memoria y tu agente de IA corren completamente en hardware que posees — no en un servicio que te renta tu propio futuro.',
+      principlesIntro:
         'LifeOS existe porque no queremos que la inteligencia se convierta en otra capa rentada de la computacion moderna. La plataforma tiene que cargar esos valores — y Axi, el agente que vive dentro de ella, tambien.',
-      items: [
+      principles: [
         {
           number: '01',
           title: 'IA local-first',
@@ -411,23 +485,11 @@ const COPY = {
         },
       ],
     },
-    matters: {
-      eyebrow: 'Por que importa',
-      title: 'La nube no deberia ser duena de tu inteligencia.',
-      body:
-        'LifeOS es otro default: una plataforma soberana donde tus dominios de vida, tu memoria y tu agente de IA corren completamente en hardware que posees — no en un servicio que te renta tu propio futuro.',
-      cloudTitle: 'Default de la nube',
-      cloudBody:
-        'Modelos remotos, lock-in de proveedor, memoria fragmentada y extraccion invisible de datos se vuelven la forma normal de la computacion.',
-      directionTitle: 'Direccion de LifeOS',
-      directionBody:
-        'Servicios open source en Python, inferencia local en GPUs de consumo, superficies auditables y Axi — un agente que mantiene tu voz, tu vision y tu memoria en tu propia laptop.',
-    },
     roadmap: {
       eyebrow: 'Lo que sigue',
       title: 'Direccion cercana',
       intro:
-        'La meta cercana no es hype. Es volver al asistente real mas pulido, mas multilingue y mas facil de seguir en publico.',
+        'La meta cercana no es hype. Es volver a la plataforma real y su agente mas pulidos, mas multilingues y mas faciles de seguir en publico.',
       items: [
         {
           status: 'Activo ahora',
@@ -453,7 +515,7 @@ const COPY = {
       eyebrow: 'Sigue el proyecto',
       title: 'Recibe actualizaciones',
       intro:
-        'El newsletter y los canales publicos de demos vienen despues. Mientras tanto, GitHub y el roadmap son los lugares canonicos y honestos para seguir Axi.',
+        'El newsletter y los canales publicos de demos vienen despues. Mientras tanto, GitHub y el roadmap son los lugares canonicos y honestos para seguir LifeOS y Axi.',
       comingSoonTitle: 'Proximamente',
       comingSoonBody:
         'Los demos publicos en YouTube y Twitch se enlazaran aqui cuando exista una cadencia real de transmisiones.',
@@ -467,7 +529,7 @@ const COPY = {
         {
           title: 'Lee el roadmap',
           description:
-            'El documento PRD-NEXT explica el estado real del asistente, lo que esta activo ahora y lo que sigue.',
+            'El documento PRD-NEXT explica el estado real de la plataforma, lo que esta activo ahora y lo que sigue.',
           href: '',
         },
         {
@@ -575,10 +637,11 @@ function useDocumentMetadata(locale: Locale) {
   }, [locale]);
 }
 
-function SectionEyebrow({children}: {children: string}) {
+function SectionEyebrow({children, color = 'primary'}: {children: string; color?: 'primary' | 'secondary'}) {
+  const textColor = color === 'secondary' ? 'text-secondary' : 'text-primary';
   return (
     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-outline/40 bg-surface/70 px-3 py-1">
-      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.24em] text-primary">
+      <span className={`font-mono text-[0.6875rem] uppercase tracking-[0.24em] ${textColor}`}>
         {children}
       </span>
     </div>
@@ -643,13 +706,13 @@ function LanguageSwitcher({
 function AxiMotif({label}: {label: string}) {
   return (
     <div className="relative mx-auto h-44 w-44">
-      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(0,212,170,0.18)_0%,rgba(0,212,170,0.04)_38%,rgba(15,15,27,0)_72%)] blur-xl" />
+      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,107,157,0.18)_0%,rgba(255,107,157,0.04)_38%,rgba(15,15,27,0)_72%)] blur-xl" />
       <img
         alt="Axi, the Mexican axolotl mascot of LifeOS"
         className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-[58%] drop-shadow-[0_0_24px_rgba(255,107,157,0.28)]"
         src="/axi-mark.svg"
       />
-      <div className="absolute inset-x-8 bottom-2 rounded-full border border-primary/20 bg-background/85 px-3 py-1 text-center font-mono text-[0.62rem] uppercase tracking-[0.24em] text-text-muted">
+      <div className="absolute inset-x-8 bottom-2 rounded-full border border-secondary/20 bg-background/85 px-3 py-1 text-center font-mono text-[0.62rem] uppercase tracking-[0.24em] text-text-muted">
         {label}
       </div>
     </div>
@@ -686,8 +749,8 @@ function Navbar({
         </a>
 
         <div className="hidden items-center gap-7 md:flex">
-          <NavLink href="#vision">{copy.nav.vision}</NavLink>
           <NavLink href="#what-works">{copy.nav.whatWorks}</NavLink>
+          <NavLink href="#why">{copy.nav.vision}</NavLink>
           <NavLink href="#install">{copy.nav.install}</NavLink>
           <NavLink href="#roadmap">{copy.nav.roadmap}</NavLink>
           <NavLink href={LINKS.github} external>
@@ -774,10 +837,10 @@ function Hero({locale}: {locale: Locale}) {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(255,107,157,0.12),rgba(255,107,157,0)_26%),radial-gradient(circle_at_78%_22%,rgba(0,212,170,0.18),rgba(0,212,170,0)_34%)]" />
             <div className="relative z-10">
               <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-                <span className="rounded-full border border-primary/25 bg-background/80 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-primary">
+                <span className="rounded-full border border-secondary/30 bg-background/80 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-secondary">
                   {copy.hero.signal}
                 </span>
-                <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-muted">
+                <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-primary">
                   {copy.hero.surface}
                 </span>
               </div>
@@ -786,25 +849,25 @@ function Hero({locale}: {locale: Locale}) {
                 <AxiMotif label={copy.hero.motifLabel} />
 
                 <div className="space-y-4">
-                  <div className="rounded-3xl border border-outline/20 bg-background/78 p-5">
+                  <div className="rounded-3xl border border-secondary/20 bg-background/78 p-5">
                     <div className="mb-3 flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-secondary/80" />
                       <span className="h-2 w-2 rounded-full bg-primary/80" />
                       <span className="ml-auto font-mono text-[0.65rem] uppercase tracking-[0.22em] text-text-muted">
-                        tty1 / life-shell
+                        axi@lifeos
                       </span>
                     </div>
                     <div className="space-y-3 font-mono text-sm text-text-muted">
                       <p>
-                        <span className="text-primary">$</span> {copy.hero.prompt}
+                        <span className="text-secondary">$</span> {copy.hero.prompt}
                       </p>
                       <p className="text-text">&gt; {copy.hero.response}</p>
                     </div>
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-outline/20 bg-background/70 p-4">
-                      <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-text-muted">
+                    <div className="rounded-2xl border border-secondary/20 bg-background/70 p-4">
+                      <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-secondary">
                         {copy.hero.memoryTitle}
                       </p>
                       <p className="mt-2 text-sm leading-6 text-text">{copy.hero.memoryBody}</p>
@@ -821,6 +884,146 @@ function Hero({locale}: {locale: Locale}) {
             </div>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Proofs({locale}: {locale: Locale}) {
+  const copy = COPY[locale];
+
+  return (
+    <section className="scroll-mt-24 py-24" id="what-works">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <div className="max-w-3xl">
+          <SectionEyebrow>{copy.proofs.eyebrow}</SectionEyebrow>
+          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+            {copy.proofs.title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.proofs.intro}</p>
+        </div>
+
+        {/* Axi group — secondary/pink */}
+        <div className="mt-14">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-secondary">
+              {copy.proofs.axiGroupHeading}
+            </span>
+            <div className="h-px flex-1 bg-secondary/15" />
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {copy.proofs.axiItems.map((proof, index) => (
+              <motion.article
+                className="group rounded-[1.5rem] border border-outline/20 bg-surface/75 p-6 transition-colors duration-300 hover:border-secondary/30 hover:bg-surface/95"
+                initial={{opacity: 0, y: 18}}
+                key={proof.title}
+                transition={{delay: index * 0.05, duration: 0.45}}
+                viewport={{once: true, amount: 0.25}}
+                whileInView={{opacity: 1, y: 0}}
+              >
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-secondary">
+                  {proof.label}
+                </p>
+                <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                  {proof.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-text-muted">{proof.description}</p>
+                <div className="mt-6 space-y-2 rounded-2xl border border-outline/20 bg-background/75 p-4">
+                  {proof.details.map((detail) => (
+                    <p
+                      className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-muted"
+                      key={detail}
+                    >
+                      {detail}
+                    </p>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+
+        {/* LifeOS platform group — primary/teal */}
+        <div className="mt-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-primary">
+              {copy.proofs.platformGroupHeading}
+            </span>
+            <div className="h-px flex-1 bg-primary/15" />
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {copy.proofs.platformItems.map((proof, index) => (
+              <motion.article
+                className="group rounded-[1.5rem] border border-outline/20 bg-surface/75 p-6 transition-colors duration-300 hover:border-primary/30 hover:bg-surface/95"
+                initial={{opacity: 0, y: 18}}
+                key={proof.title}
+                transition={{delay: index * 0.05, duration: 0.45}}
+                viewport={{once: true, amount: 0.25}}
+                whileInView={{opacity: 1, y: 0}}
+              >
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-primary">
+                  {proof.label}
+                </p>
+                <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                  {proof.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-text-muted">{proof.description}</p>
+                <div className="mt-6 space-y-2 rounded-2xl border border-outline/20 bg-background/75 p-4">
+                  {proof.details.map((detail) => (
+                    <p
+                      className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-muted"
+                      key={detail}
+                    >
+                      {detail}
+                    </p>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Why({locale}: {locale: Locale}) {
+  const copy = COPY[locale];
+
+  return (
+    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/45 py-24" id="why">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        {/* Strong headline from WhyItMatters */}
+        <div className="overflow-hidden rounded-[2rem] border border-outline/20 bg-background/60 p-8 md:p-12">
+          <SectionEyebrow>{copy.why.eyebrow}</SectionEyebrow>
+          <h2 className="font-headline text-4xl font-bold leading-tight tracking-[-0.04em] text-text md:text-5xl">
+            {copy.why.title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.why.body}</p>
+        </div>
+
+        {/* Principles cards */}
+        <p className="mt-12 max-w-3xl text-lg leading-8 text-text-muted">{copy.why.principlesIntro}</p>
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          {copy.why.principles.map((principle, index) => (
+            <motion.article
+              className="rounded-[1.75rem] border border-primary/20 bg-background/72 p-8"
+              initial={{opacity: 0, y: 18}}
+              key={principle.title}
+              transition={{delay: index * 0.06, duration: 0.45}}
+              viewport={{once: true, amount: 0.25}}
+              whileInView={{opacity: 1, y: 0}}
+            >
+              <p className="font-mono text-[0.8rem] uppercase tracking-[0.24em] text-primary">
+                {principle.number}
+              </p>
+              <h3 className="mt-5 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                {principle.title}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-text-muted">{principle.description}</p>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -849,7 +1052,7 @@ function Install({locale}: {locale: Locale}) {
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="grid content-start gap-3">
             {copy.requirements.map((req) => (
-              <div className="rounded-2xl border border-outline/20 bg-surface/70 p-5" key={req.label}>
+              <div className="rounded-2xl border border-primary/20 bg-surface/70 p-5" key={req.label}>
                 <p className="font-mono text-[0.66rem] uppercase tracking-[0.22em] text-primary">
                   {req.label}
                 </p>
@@ -896,133 +1099,6 @@ function Install({locale}: {locale: Locale}) {
             {copy.ctaSecondary}
             <ArrowUpRight className="h-4 w-4" />
           </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Proofs({locale}: {locale: Locale}) {
-  const copy = COPY[locale];
-
-  return (
-    <section className="scroll-mt-24 py-24" id="what-works">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        <div className="max-w-3xl">
-          <SectionEyebrow>{copy.proofs.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
-            {copy.proofs.title}
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.proofs.intro}</p>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {copy.proofs.items.map((proof, index) => (
-            <motion.article
-              className="group rounded-[1.5rem] border border-outline/20 bg-surface/75 p-6 transition-colors duration-300 hover:border-primary/30 hover:bg-surface/95"
-              initial={{opacity: 0, y: 18}}
-              key={proof.title}
-              transition={{delay: index * 0.05, duration: 0.45}}
-              viewport={{once: true, amount: 0.25}}
-              whileInView={{opacity: 1, y: 0}}
-            >
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-primary">
-                {proof.label}
-              </p>
-              <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
-                {proof.title}
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-text-muted">{proof.description}</p>
-              <div className="mt-6 space-y-2 rounded-2xl border border-outline/20 bg-background/75 p-4">
-                {proof.details.map((detail) => (
-                  <p
-                    className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-muted"
-                    key={detail}
-                  >
-                    {detail}
-                  </p>
-                ))}
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Principles({locale}: {locale: Locale}) {
-  const copy = COPY[locale];
-
-  return (
-    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/45 py-24" id="vision">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        <div className="max-w-3xl">
-          <SectionEyebrow>{copy.principles.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
-            {copy.principles.title}
-          </h2>
-          <p className="mt-5 text-lg leading-8 text-text-muted">{copy.principles.intro}</p>
-        </div>
-
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {copy.principles.items.map((principle, index) => (
-            <motion.article
-              className="rounded-[1.75rem] border border-outline/20 bg-background/72 p-8"
-              initial={{opacity: 0, y: 18}}
-              key={principle.title}
-              transition={{delay: index * 0.06, duration: 0.45}}
-              viewport={{once: true, amount: 0.25}}
-              whileInView={{opacity: 1, y: 0}}
-            >
-              <p className="font-mono text-[0.8rem] uppercase tracking-[0.24em] text-primary">
-                {principle.number}
-              </p>
-              <h3 className="mt-5 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
-                {principle.title}
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-text-muted">{principle.description}</p>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyItMatters({locale}: {locale: Locale}) {
-  const copy = COPY[locale];
-
-  return (
-    <section className="py-24">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        <div className="overflow-hidden rounded-[2rem] border border-outline/20 bg-surface/75 p-8 md:p-12">
-          <SectionEyebrow>{copy.matters.eyebrow}</SectionEyebrow>
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="font-headline text-4xl font-bold leading-tight tracking-[-0.04em] text-text md:text-5xl">
-                {copy.matters.title}
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.matters.body}</p>
-            </div>
-
-            <div className="grid gap-4">
-              <div className="rounded-[1.5rem] border border-secondary/25 bg-secondary/5 p-6">
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-secondary">
-                  {copy.matters.cloudTitle}
-                </p>
-                <p className="mt-3 text-sm leading-7 text-text-muted">{copy.matters.cloudBody}</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-primary/25 bg-primary/5 p-6">
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-primary">
-                  {copy.matters.directionTitle}
-                </p>
-                <p className="mt-3 text-sm leading-7 text-text-muted">
-                  {copy.matters.directionBody}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -1259,10 +1335,9 @@ export default function App() {
       <Navbar locale={locale} onLocaleChange={setLocale} />
       <main>
         <Hero locale={locale} />
-        <Install locale={locale} />
         <Proofs locale={locale} />
-        <Principles locale={locale} />
-        <WhyItMatters locale={locale} />
+        <Why locale={locale} />
+        <Install locale={locale} />
         <Roadmap locale={locale} />
         <Updates locale={locale} />
         <Support locale={locale} />
