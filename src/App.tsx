@@ -583,17 +583,11 @@ function AxiMotif({label}: {label: string}) {
   return (
     <div className="relative mx-auto h-44 w-44">
       <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(0,212,170,0.18)_0%,rgba(0,212,170,0.04)_38%,rgba(15,15,27,0)_72%)] blur-xl" />
-      <div className="absolute left-1/2 top-1/2 h-24 w-28 -translate-x-1/2 -translate-y-1/2 rounded-[48%] border border-primary/25 bg-[linear-gradient(180deg,rgba(0,212,170,0.18)_0%,rgba(22,24,48,0.9)_72%)] shadow-[0_0_50px_rgba(0,212,170,0.16)]">
-        <span className="absolute left-7 top-8 h-2 w-2 rounded-full bg-primary" />
-        <span className="absolute right-7 top-8 h-2 w-2 rounded-full bg-primary" />
-        <span className="absolute left-1/2 top-[3.6rem] h-1.5 w-8 -translate-x-1/2 rounded-full bg-secondary/70" />
-      </div>
-      <span className="absolute left-[0.8rem] top-[2.8rem] h-3 w-14 rounded-full bg-secondary/65 blur-[1px] rotate-[-26deg]" />
-      <span className="absolute left-[0.55rem] top-[4.35rem] h-3 w-12 rounded-full bg-secondary/65 blur-[1px]" />
-      <span className="absolute left-[0.95rem] top-[5.75rem] h-3 w-14 rounded-full bg-secondary/55 blur-[1px] rotate-[24deg]" />
-      <span className="absolute right-[0.8rem] top-[2.8rem] h-3 w-14 rounded-full bg-secondary/65 blur-[1px] rotate-[26deg]" />
-      <span className="absolute right-[0.55rem] top-[4.35rem] h-3 w-12 rounded-full bg-secondary/65 blur-[1px]" />
-      <span className="absolute right-[0.95rem] top-[5.75rem] h-3 w-14 rounded-full bg-secondary/55 blur-[1px] rotate-[-24deg]" />
+      <img
+        alt="Axi, the Mexican axolotl mascot of LifeOS"
+        className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-[58%] drop-shadow-[0_0_24px_rgba(255,107,157,0.28)]"
+        src="/axie-mark.svg"
+      />
       <div className="absolute inset-x-8 bottom-2 rounded-full border border-primary/20 bg-background/85 px-3 py-1 text-center font-mono text-[0.62rem] uppercase tracking-[0.24em] text-text-muted">
         {label}
       </div>

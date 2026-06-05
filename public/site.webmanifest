@@ -1,7 +1,7 @@
 {
   "name": "LifeOS",
   "short_name": "LifeOS",
-  "description": "AI-native Linux from Mexico. Local-first, privacy-first, and built in public.",
+  "description": "Local-first AI personal assistant from Mexico. Runs 100% on your laptop. No cloud, no telemetry.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0F0F1B",
