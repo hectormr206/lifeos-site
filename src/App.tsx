@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {motion} from 'motion/react';
-import {ArrowUpRight, Github, Heart} from 'lucide-react';
+import {useEffect, useRef, useState} from 'react';
+import {motion, AnimatePresence} from 'motion/react';
+import {ArrowUpRight, Github, Heart, Menu, X} from 'lucide-react';
 
 type Locale = 'en' | 'es';
 
@@ -42,7 +42,10 @@ const COPY = {
       roadmap: 'Roadmap',
       updates: 'Updates',
       support: 'Support LifeOS',
+      supportShort: 'Support',
       language: 'Language',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
     },
     hero: {
       eyebrow: 'Local-first life platform from Mexico',
@@ -313,7 +316,10 @@ const COPY = {
       roadmap: 'Roadmap',
       updates: 'Actualizaciones',
       support: 'Apoyar LifeOS',
+      supportShort: 'Apoyar',
       language: 'Idioma',
+      openMenu: 'Abrir menu',
+      closeMenu: 'Cerrar menu',
     },
     hero: {
       eyebrow: 'Plataforma de vida local-first desde Mexico',
@@ -652,15 +658,18 @@ function NavLink({
   href,
   children,
   external = false,
+  onClick,
 }: {
   href: string;
   children: string;
   external?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <a
       className="text-sm uppercase tracking-[0.18em] text-text-muted transition-colors hover:text-primary"
       href={href}
+      onClick={onClick}
       {...(external ? {target: '_blank', rel: 'noreferrer'} : {})}
     >
       {children}
@@ -678,7 +687,7 @@ function LanguageSwitcher({
   label: string;
 }) {
   return (
-    <div className="flex items-center gap-2 rounded-full border border-outline/35 bg-surface/55 px-2 py-1">
+    <div className="flex items-center gap-1.5 rounded-full border border-outline/35 bg-surface/55 px-2 py-1">
       <span className="hidden font-mono text-[0.64rem] uppercase tracking-[0.2em] text-text-muted lg:inline">
         {label}
       </span>
@@ -686,7 +695,7 @@ function LanguageSwitcher({
         const active = value === locale;
         return (
           <button
-            className={`rounded-full px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
+            className={`rounded-full px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
               active
                 ? 'bg-primary text-background'
                 : 'text-text-muted hover:bg-background/80 hover:text-text'
@@ -705,17 +714,126 @@ function LanguageSwitcher({
 
 function AxiMotif({label}: {label: string}) {
   return (
-    <div className="relative mx-auto h-44 w-44">
+    <div className="relative mx-auto h-36 w-36 sm:h-44 sm:w-44">
       <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255,107,157,0.18)_0%,rgba(255,107,157,0.04)_38%,rgba(15,15,27,0)_72%)] blur-xl" />
       <img
         alt="Axi, the Mexican axolotl mascot of LifeOS"
-        className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-[58%] drop-shadow-[0_0_24px_rgba(255,107,157,0.28)]"
+        className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-[58%] drop-shadow-[0_0_24px_rgba(255,107,157,0.28)] sm:h-28 sm:w-28"
         src="/axi-mark.svg"
       />
-      <div className="absolute inset-x-8 bottom-2 rounded-full border border-secondary/20 bg-background/85 px-3 py-1 text-center font-mono text-[0.62rem] uppercase tracking-[0.24em] text-text-muted">
+      <div className="absolute inset-x-6 bottom-2 rounded-full border border-secondary/20 bg-background/85 px-2 py-1 text-center font-mono text-[0.58rem] uppercase tracking-[0.2em] text-text-muted sm:inset-x-8 sm:text-[0.62rem] sm:tracking-[0.24em]">
         {label}
       </div>
     </div>
+  );
+}
+
+function MobileMenu({
+  open,
+  onClose,
+  locale,
+}: {
+  open: boolean;
+  onClose: () => void;
+  locale: Locale;
+}) {
+  const copy = COPY[locale];
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [open, onClose]);
+
+  // Lock body scroll while open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            animate={{opacity: 1}}
+            className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm"
+            exit={{opacity: 0}}
+            initial={{opacity: 0}}
+            onClick={onClose}
+            transition={{duration: 0.2}}
+          />
+          {/* Drawer */}
+          <motion.div
+            animate={{x: 0}}
+            className="fixed inset-y-0 right-0 z-50 flex w-72 max-w-[85vw] flex-col border-l border-outline/20 bg-surface/95 backdrop-blur-xl"
+            exit={{x: '100%'}}
+            initial={{x: '100%'}}
+            ref={menuRef}
+            transition={{duration: 0.28, ease: [0.32, 0, 0.2, 1]}}
+          >
+            <div className="flex items-center justify-between border-b border-outline/20 px-5 py-4">
+              <span className="font-headline text-lg font-bold tracking-[0.18em] text-primary">
+                LifeOS
+              </span>
+              <button
+                aria-label={copy.nav.closeMenu}
+                className="rounded-full p-2 text-text-muted transition-colors hover:bg-background/60 hover:text-text"
+                onClick={onClose}
+                type="button"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <nav aria-label="Mobile navigation" className="flex flex-col gap-1 p-4">
+              <NavLink href="#what-works" onClick={onClose}>
+                {copy.nav.whatWorks}
+              </NavLink>
+              <NavLink href="#why" onClick={onClose}>
+                {copy.nav.vision}
+              </NavLink>
+              <NavLink href="#install" onClick={onClose}>
+                {copy.nav.install}
+              </NavLink>
+              <NavLink href="#roadmap" onClick={onClose}>
+                {copy.nav.roadmap}
+              </NavLink>
+              <NavLink href={LINKS.github} external onClick={onClose}>
+                GitHub
+              </NavLink>
+              <NavLink href="#updates" onClick={onClose}>
+                {copy.nav.updates}
+              </NavLink>
+            </nav>
+
+            <div className="mt-auto border-t border-outline/20 p-4">
+              <a
+                className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
+                href={LINKS.sponsors}
+                onClick={onClose}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {copy.nav.support}
+              </a>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -727,51 +845,73 @@ function Navbar({
   onLocaleChange: (value: Locale) => void;
 }) {
   const copy = COPY[locale];
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-outline/20 bg-background/82 backdrop-blur-xl">
-      <nav
-        aria-label="Primary"
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-8"
-      >
-        <a
-          className="flex items-center gap-3 font-headline text-xl font-bold tracking-[0.2em] text-primary"
-          href="#top"
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-outline/20 bg-background/82 backdrop-blur-xl">
+        <nav
+          aria-label="Primary"
+          className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-4 sm:h-16 md:gap-4 md:px-8"
         >
-          LifeOS
-          <span
-            aria-label="LifeOS is in alpha"
-            className="rounded-full border border-amber-400/50 bg-amber-400/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-300"
-            title="LifeOS is in alpha — expect fast iteration and occasional regressions"
-          >
-            Alpha
-          </span>
-        </a>
-
-        <div className="hidden items-center gap-7 md:flex">
-          <NavLink href="#what-works">{copy.nav.whatWorks}</NavLink>
-          <NavLink href="#why">{copy.nav.vision}</NavLink>
-          <NavLink href="#install">{copy.nav.install}</NavLink>
-          <NavLink href="#roadmap">{copy.nav.roadmap}</NavLink>
-          <NavLink href={LINKS.github} external>
-            GitHub
-          </NavLink>
-          <NavLink href="#updates">{copy.nav.updates}</NavLink>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <LanguageSwitcher label={copy.nav.language} locale={locale} onChange={onLocaleChange} />
+          {/* Wordmark + Alpha badge */}
           <a
-            className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
-            href={LINKS.sponsors}
-            rel="noreferrer"
-            target="_blank"
+            className="flex min-w-0 shrink-0 items-center gap-2 font-headline text-lg font-bold tracking-[0.2em] text-primary sm:gap-3 sm:text-xl"
+            href="#top"
           >
-            {copy.nav.support}
+            <span className="truncate">LifeOS</span>
+            <span
+              aria-label="LifeOS is in alpha"
+              className="hidden rounded-full border border-amber-400/50 bg-amber-400/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-300 xs:inline-block sm:inline-block"
+              title="LifeOS is in alpha — expect fast iteration and occasional regressions"
+            >
+              Alpha
+            </span>
           </a>
-        </div>
-      </nav>
-    </header>
+
+          {/* Desktop nav links — hidden below md */}
+          <div className="hidden min-w-0 items-center gap-5 md:flex lg:gap-7">
+            <NavLink href="#what-works">{copy.nav.whatWorks}</NavLink>
+            <NavLink href="#why">{copy.nav.vision}</NavLink>
+            <NavLink href="#install">{copy.nav.install}</NavLink>
+            <NavLink href="#roadmap">{copy.nav.roadmap}</NavLink>
+            <NavLink href={LINKS.github} external>
+              GitHub
+            </NavLink>
+            <NavLink href="#updates">{copy.nav.updates}</NavLink>
+          </div>
+
+          {/* Right side: lang switcher + support CTA (desktop) + hamburger (mobile) */}
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <LanguageSwitcher label={copy.nav.language} locale={locale} onChange={onLocaleChange} />
+
+            {/* Support button — text shortens on small screens, hidden below sm */}
+            <a
+              className="hidden items-center justify-center rounded-full bg-primary px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:inline-flex sm:px-4"
+              href={LINKS.sponsors}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span className="hidden md:inline">{copy.nav.support}</span>
+              <span className="md:hidden">{copy.nav.supportShort}</span>
+            </a>
+
+            {/* Hamburger — visible below md */}
+            <button
+              aria-expanded={menuOpen}
+              aria-label={copy.nav.openMenu}
+              className="inline-flex items-center justify-center rounded-full border border-outline/30 p-2 text-text-muted transition-colors hover:bg-surface hover:text-text md:hidden"
+              onClick={() => setMenuOpen(true)}
+              type="button"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <MobileMenu locale={locale} open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }
 
@@ -779,47 +919,49 @@ function Hero({locale}: {locale: Locale}) {
   const copy = COPY[locale];
 
   return (
-    <section className="relative overflow-hidden pt-28" id="top">
+    <section className="relative overflow-hidden pt-14 sm:pt-16" id="top">
       <div className="pointer-events-none absolute inset-0 hero-grid opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(0,212,170,0.14),rgba(15,15,27,0)_56%)]" />
 
-      <div className="mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-16 px-6 pb-20 pt-10 md:px-8 lg:grid-cols-[1.02fr_0.98fr]">
+      <div className="mx-auto grid min-h-[calc(100svh-3.5rem)] max-w-7xl items-center gap-10 px-4 pb-16 pt-10 sm:min-h-[calc(100svh-4rem)] sm:px-6 md:gap-16 md:px-8 lg:grid-cols-[1.02fr_0.98fr]">
         <motion.div
           animate={{opacity: 1, y: 0}}
           initial={{opacity: 0, y: 24}}
           transition={{duration: 0.55}}
         >
           <SectionEyebrow>{copy.hero.eyebrow}</SectionEyebrow>
-          <h1 className="max-w-3xl font-headline text-5xl font-bold leading-[0.98] tracking-[-0.04em] text-text md:text-7xl">
-            {copy.hero.titleBefore} <span className="text-primary">{copy.hero.titleAccent}</span>,{' '}
+          {/* Responsive headline: smaller on 320px, grows with screen */}
+          <h1 className="max-w-3xl font-headline text-[2.25rem] font-bold leading-[0.98] tracking-[-0.04em] text-text xs:text-5xl md:text-7xl">
+            {copy.hero.titleBefore}{' '}
+            <span className="text-primary">{copy.hero.titleAccent}</span>,{' '}
             {copy.hero.titleAfter}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-text-muted md:text-xl">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-text-muted sm:text-lg sm:leading-8 md:text-xl">
             {copy.hero.body}
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:px-8 sm:py-4"
               href="#install"
             >
               {copy.hero.primaryCta}
             </a>
             <a
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-outline/45 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-outline/45 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5 sm:px-8 sm:py-4"
               href={LINKS.github}
               rel="noreferrer"
               target="_blank"
             >
-              <Github className="h-4 w-4" />
+              <Github className="h-4 w-4 shrink-0" />
               {copy.hero.secondaryCta}
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
             {copy.hero.chips.map((item) => (
               <span
-                className="rounded-full border border-outline/35 bg-surface/60 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-text-muted"
+                className="rounded-full border border-outline/35 bg-surface/60 px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-text-muted sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.18em]"
                 key={item}
               >
                 {item}
@@ -833,50 +975,61 @@ function Hero({locale}: {locale: Locale}) {
           initial={{opacity: 0, y: 24}}
           transition={{delay: 0.1, duration: 0.55}}
         >
-          <div className="relative overflow-hidden rounded-[2rem] border border-outline/25 bg-surface/75 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-outline/25 bg-surface/75 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(255,107,157,0.12),rgba(255,107,157,0)_26%),radial-gradient(circle_at_78%_22%,rgba(0,212,170,0.18),rgba(0,212,170,0)_34%)]" />
             <div className="relative z-10">
-              <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-                <span className="rounded-full border border-secondary/30 bg-background/80 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-secondary">
+              {/* Signal / Surface pill row */}
+              <div className="mb-4 flex min-w-0 flex-wrap items-center justify-between gap-2 sm:mb-5 sm:gap-3">
+                <span className="min-w-0 break-words rounded-full border border-secondary/30 bg-background/80 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-secondary sm:text-[0.68rem] sm:tracking-[0.22em]">
                   {copy.hero.signal}
                 </span>
-                <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-primary">
+                <span className="min-w-0 break-words font-mono text-[0.65rem] uppercase tracking-[0.2em] text-primary sm:text-[0.68rem] sm:tracking-[0.22em]">
                   {copy.hero.surface}
                 </span>
               </div>
 
-              <div className="grid items-center gap-6 lg:grid-cols-[220px_1fr]">
+              {/* Inner layout: AxiMotif + terminal + cards */}
+              <div className="grid items-center gap-4 sm:gap-6 lg:grid-cols-[200px_1fr] xl:grid-cols-[220px_1fr]">
                 <AxiMotif label={copy.hero.motifLabel} />
 
-                <div className="space-y-4">
-                  <div className="rounded-3xl border border-secondary/20 bg-background/78 p-5">
+                <div className="min-w-0 space-y-3 sm:space-y-4">
+                  {/* Terminal block */}
+                  <div className="overflow-hidden rounded-2xl border border-secondary/20 bg-background/78 p-4 sm:rounded-3xl sm:p-5">
                     <div className="mb-3 flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-secondary/80" />
-                      <span className="h-2 w-2 rounded-full bg-primary/80" />
-                      <span className="ml-auto font-mono text-[0.65rem] uppercase tracking-[0.22em] text-text-muted">
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-secondary/80" />
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-primary/80" />
+                      <span className="ml-auto font-mono text-[0.62rem] uppercase tracking-[0.2em] text-text-muted sm:text-[0.65rem] sm:tracking-[0.22em]">
                         axi@lifeos
                       </span>
                     </div>
-                    <div className="space-y-3 font-mono text-sm text-text-muted">
-                      <p>
-                        <span className="text-secondary">$</span> {copy.hero.prompt}
+                    <div className="min-w-0 space-y-2 font-mono text-xs leading-6 text-text-muted sm:space-y-3 sm:text-sm sm:leading-7">
+                      <p className="min-w-0 break-words">
+                        <span className="text-secondary">$</span>{' '}
+                        {copy.hero.prompt}
                       </p>
-                      <p className="text-text">&gt; {copy.hero.response}</p>
+                      <p className="min-w-0 break-words text-text">
+                        &gt; {copy.hero.response}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-secondary/20 bg-background/70 p-4">
-                      <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-secondary">
+                  {/* Memory + Agent cards */}
+                  <div className="grid gap-2 min-[480px]:grid-cols-2 sm:gap-3">
+                    <div className="min-w-0 overflow-hidden rounded-2xl border border-secondary/20 bg-background/70 p-3 sm:p-4">
+                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-secondary sm:text-[0.65rem] sm:tracking-[0.22em]">
                         {copy.hero.memoryTitle}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-text">{copy.hero.memoryBody}</p>
+                      <p className="mt-2 text-xs leading-5 text-text sm:text-sm sm:leading-6">
+                        {copy.hero.memoryBody}
+                      </p>
                     </div>
-                    <div className="rounded-2xl border border-outline/20 bg-background/70 p-4">
-                      <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-text-muted">
+                    <div className="min-w-0 overflow-hidden rounded-2xl border border-outline/20 bg-background/70 p-3 sm:p-4">
+                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-text-muted sm:text-[0.65rem] sm:tracking-[0.22em]">
                         {copy.hero.operatorTitle}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-text">{copy.hero.operatorBody}</p>
+                      <p className="mt-2 text-xs leading-5 text-text sm:text-sm sm:leading-6">
+                        {copy.hero.operatorBody}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -893,28 +1046,30 @@ function Proofs({locale}: {locale: Locale}) {
   const copy = COPY[locale];
 
   return (
-    <section className="scroll-mt-24 py-24" id="what-works">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
+    <section className="scroll-mt-24 py-16 sm:py-24" id="what-works">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div className="max-w-3xl">
           <SectionEyebrow>{copy.proofs.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+          <h2 className="font-headline text-3xl font-bold tracking-[-0.03em] text-text sm:text-4xl">
             {copy.proofs.title}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.proofs.intro}</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted sm:mt-5 sm:text-lg sm:leading-8">
+            {copy.proofs.intro}
+          </p>
         </div>
 
         {/* Axi group — secondary/pink */}
-        <div className="mt-14">
-          <div className="mb-6 flex items-center gap-3">
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-secondary">
+        <div className="mt-10 sm:mt-14">
+          <div className="mb-5 flex min-w-0 items-center gap-3 sm:mb-6">
+            <span className="shrink-0 font-mono text-[0.7rem] uppercase tracking-[0.28em] text-secondary">
               {copy.proofs.axiGroupHeading}
             </span>
-            <div className="h-px flex-1 bg-secondary/15" />
+            <div className="h-px min-w-0 flex-1 bg-secondary/15" />
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {copy.proofs.axiItems.map((proof, index) => (
               <motion.article
-                className="group rounded-[1.5rem] border border-outline/20 bg-surface/75 p-6 transition-colors duration-300 hover:border-secondary/30 hover:bg-surface/95"
+                className="group overflow-hidden rounded-[1.25rem] border border-outline/20 bg-surface/75 p-5 transition-colors duration-300 hover:border-secondary/30 hover:bg-surface/95 sm:rounded-[1.5rem] sm:p-6"
                 initial={{opacity: 0, y: 18}}
                 key={proof.title}
                 transition={{delay: index * 0.05, duration: 0.45}}
@@ -924,14 +1079,16 @@ function Proofs({locale}: {locale: Locale}) {
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-secondary">
                   {proof.label}
                 </p>
-                <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                <h3 className="mt-3 font-headline text-xl font-semibold tracking-[-0.03em] text-text sm:mt-4 sm:text-2xl">
                   {proof.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-text-muted">{proof.description}</p>
-                <div className="mt-6 space-y-2 rounded-2xl border border-outline/20 bg-background/75 p-4">
+                <p className="mt-3 text-sm leading-6 text-text-muted sm:mt-4 sm:leading-7">
+                  {proof.description}
+                </p>
+                <div className="mt-5 space-y-2 overflow-hidden rounded-xl border border-outline/20 bg-background/75 p-3 sm:mt-6 sm:rounded-2xl sm:p-4">
                   {proof.details.map((detail) => (
                     <p
-                      className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-muted"
+                      className="break-words font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-muted sm:tracking-[0.18em]"
                       key={detail}
                     >
                       {detail}
@@ -944,17 +1101,17 @@ function Proofs({locale}: {locale: Locale}) {
         </div>
 
         {/* LifeOS platform group — primary/teal */}
-        <div className="mt-16">
-          <div className="mb-6 flex items-center gap-3">
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-primary">
+        <div className="mt-12 sm:mt-16">
+          <div className="mb-5 flex min-w-0 items-center gap-3 sm:mb-6">
+            <span className="shrink-0 font-mono text-[0.7rem] uppercase tracking-[0.28em] text-primary">
               {copy.proofs.platformGroupHeading}
             </span>
-            <div className="h-px flex-1 bg-primary/15" />
+            <div className="h-px min-w-0 flex-1 bg-primary/15" />
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {copy.proofs.platformItems.map((proof, index) => (
               <motion.article
-                className="group rounded-[1.5rem] border border-outline/20 bg-surface/75 p-6 transition-colors duration-300 hover:border-primary/30 hover:bg-surface/95"
+                className="group overflow-hidden rounded-[1.25rem] border border-outline/20 bg-surface/75 p-5 transition-colors duration-300 hover:border-primary/30 hover:bg-surface/95 sm:rounded-[1.5rem] sm:p-6"
                 initial={{opacity: 0, y: 18}}
                 key={proof.title}
                 transition={{delay: index * 0.05, duration: 0.45}}
@@ -964,14 +1121,16 @@ function Proofs({locale}: {locale: Locale}) {
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-primary">
                   {proof.label}
                 </p>
-                <h3 className="mt-4 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                <h3 className="mt-3 font-headline text-xl font-semibold tracking-[-0.03em] text-text sm:mt-4 sm:text-2xl">
                   {proof.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-text-muted">{proof.description}</p>
-                <div className="mt-6 space-y-2 rounded-2xl border border-outline/20 bg-background/75 p-4">
+                <p className="mt-3 text-sm leading-6 text-text-muted sm:mt-4 sm:leading-7">
+                  {proof.description}
+                </p>
+                <div className="mt-5 space-y-2 overflow-hidden rounded-xl border border-outline/20 bg-background/75 p-3 sm:mt-6 sm:rounded-2xl sm:p-4">
                   {proof.details.map((detail) => (
                     <p
-                      className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-muted"
+                      className="break-words font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-muted sm:tracking-[0.18em]"
                       key={detail}
                     >
                       {detail}
@@ -991,23 +1150,27 @@ function Why({locale}: {locale: Locale}) {
   const copy = COPY[locale];
 
   return (
-    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/45 py-24" id="why">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
+    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/45 py-16 sm:py-24" id="why">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         {/* Strong headline from WhyItMatters */}
-        <div className="overflow-hidden rounded-[2rem] border border-outline/20 bg-background/60 p-8 md:p-12">
+        <div className="overflow-hidden rounded-[1.5rem] border border-outline/20 bg-background/60 p-6 sm:rounded-[2rem] sm:p-8 md:p-12">
           <SectionEyebrow>{copy.why.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold leading-tight tracking-[-0.04em] text-text md:text-5xl">
+          <h2 className="font-headline text-3xl font-bold leading-tight tracking-[-0.04em] text-text sm:text-4xl md:text-5xl">
             {copy.why.title}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.why.body}</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted sm:mt-5 sm:text-lg sm:leading-8">
+            {copy.why.body}
+          </p>
         </div>
 
         {/* Principles cards */}
-        <p className="mt-12 max-w-3xl text-lg leading-8 text-text-muted">{copy.why.principlesIntro}</p>
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <p className="mt-10 max-w-3xl text-base leading-7 text-text-muted sm:mt-12 sm:text-lg sm:leading-8">
+          {copy.why.principlesIntro}
+        </p>
+        <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 lg:grid-cols-3">
           {copy.why.principles.map((principle, index) => (
             <motion.article
-              className="rounded-[1.75rem] border border-primary/20 bg-background/72 p-8"
+              className="rounded-[1.5rem] border border-primary/20 bg-background/72 p-6 sm:rounded-[1.75rem] sm:p-8"
               initial={{opacity: 0, y: 18}}
               key={principle.title}
               transition={{delay: index * 0.06, duration: 0.45}}
@@ -1017,10 +1180,12 @@ function Why({locale}: {locale: Locale}) {
               <p className="font-mono text-[0.8rem] uppercase tracking-[0.24em] text-primary">
                 {principle.number}
               </p>
-              <h3 className="mt-5 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+              <h3 className="mt-4 font-headline text-xl font-semibold tracking-[-0.03em] text-text sm:mt-5 sm:text-2xl">
                 {principle.title}
               </h3>
-              <p className="mt-4 text-sm leading-7 text-text-muted">{principle.description}</p>
+              <p className="mt-3 text-sm leading-6 text-text-muted sm:mt-4 sm:leading-7">
+                {principle.description}
+              </p>
             </motion.article>
           ))}
         </div>
@@ -1033,26 +1198,29 @@ function Install({locale}: {locale: Locale}) {
   const copy = COPY[locale].install;
 
   return (
-    <section className="scroll-mt-24 py-24" id="install">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
+    <section className="scroll-mt-24 py-16 sm:py-24" id="install">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div className="max-w-3xl">
           <SectionEyebrow>{copy.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+          <h2 className="font-headline text-3xl font-bold tracking-[-0.03em] text-text sm:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-text-muted">{copy.intro}</p>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber-400/45 bg-amber-400/10 px-4 py-2">
-            <span className="h-2 w-2 rounded-full bg-amber-300" />
-            <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-amber-300">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-text-muted sm:mt-5 sm:text-lg sm:leading-8">
+            {copy.intro}
+          </p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-amber-400/45 bg-amber-400/10 px-3 py-2 sm:mt-6 sm:px-4">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-amber-300" />
+            <span className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-amber-300 sm:text-[0.68rem] sm:tracking-[0.16em]">
               {copy.alpha}
             </span>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* Requirements */}
           <div className="grid content-start gap-3">
             {copy.requirements.map((req) => (
-              <div className="rounded-2xl border border-primary/20 bg-surface/70 p-5" key={req.label}>
+              <div className="rounded-xl border border-primary/20 bg-surface/70 p-4 sm:rounded-2xl sm:p-5" key={req.label}>
                 <p className="font-mono text-[0.66rem] uppercase tracking-[0.22em] text-primary">
                   {req.label}
                 </p>
@@ -1061,15 +1229,16 @@ function Install({locale}: {locale: Locale}) {
             ))}
           </div>
 
-          <div className="overflow-hidden rounded-[1.5rem] border border-outline/25 bg-background/85 shadow-[0_30px_80px_rgba(0,0,0,0.38)]">
-            <div className="flex items-center gap-2 border-b border-outline/20 px-5 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-secondary/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
-              <span className="ml-auto font-mono text-[0.64rem] uppercase tracking-[0.22em] text-text-muted">
+          {/* Terminal */}
+          <div className="overflow-hidden rounded-[1.25rem] border border-outline/25 bg-background/85 shadow-[0_30px_80px_rgba(0,0,0,0.38)] sm:rounded-[1.5rem]">
+            <div className="flex items-center gap-2 border-b border-outline/20 px-4 py-3 sm:px-5">
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-secondary/80" />
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-primary/80" />
+              <span className="ml-auto font-mono text-[0.62rem] uppercase tracking-[0.2em] text-text-muted sm:text-[0.64rem] sm:tracking-[0.22em]">
                 {copy.terminalLabel}
               </span>
             </div>
-            <div className="space-y-2 p-6 font-mono text-sm leading-7">
+            <div className="space-y-2 overflow-x-hidden p-4 font-mono text-xs leading-6 sm:p-6 sm:text-sm sm:leading-7">
               {copy.steps.map((step) => (
                 <p className="break-all text-text" key={step}>
                   <span className="select-none text-primary">$</span> {step}
@@ -1080,24 +1249,24 @@ function Install({locale}: {locale: Locale}) {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:flex-wrap">
           <a
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:px-8 sm:py-4"
             href={LINKS.github}
             rel="noreferrer"
             target="_blank"
           >
-            <Github className="h-4 w-4" />
+            <Github className="h-4 w-4 shrink-0" />
             {copy.ctaPrimary}
           </a>
           <a
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-outline/45 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-outline/45 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5 sm:px-8 sm:py-4"
             href={LINKS.installGuide}
             rel="noreferrer"
             target="_blank"
           >
             {copy.ctaSecondary}
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
           </a>
         </div>
       </div>
@@ -1109,20 +1278,22 @@ function Roadmap({locale}: {locale: Locale}) {
   const copy = COPY[locale];
 
   return (
-    <section className="scroll-mt-24 py-24" id="roadmap">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
+    <section className="scroll-mt-24 py-16 sm:py-24" id="roadmap">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div className="max-w-3xl">
           <SectionEyebrow>{copy.roadmap.eyebrow}</SectionEyebrow>
-          <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+          <h2 className="font-headline text-3xl font-bold tracking-[-0.03em] text-text sm:text-4xl">
             {copy.roadmap.title}
           </h2>
-          <p className="mt-5 text-lg leading-8 text-text-muted">{copy.roadmap.intro}</p>
+          <p className="mt-4 text-base leading-7 text-text-muted sm:mt-5 sm:text-lg sm:leading-8">
+            {copy.roadmap.intro}
+          </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-3">
           {copy.roadmap.items.map((item, index) => (
             <motion.article
-              className="rounded-[1.75rem] border border-outline/20 bg-surface/70 p-8"
+              className="rounded-[1.5rem] border border-outline/20 bg-surface/70 p-6 sm:rounded-[1.75rem] sm:p-8"
               initial={{opacity: 0, y: 18}}
               key={item.title}
               transition={{delay: index * 0.06, duration: 0.45}}
@@ -1132,10 +1303,12 @@ function Roadmap({locale}: {locale: Locale}) {
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-primary">
                 {item.status}
               </p>
-              <h3 className="mt-5 font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+              <h3 className="mt-4 font-headline text-xl font-semibold tracking-[-0.03em] text-text sm:mt-5 sm:text-2xl">
                 {item.title}
               </h3>
-              <p className="mt-4 text-sm leading-7 text-text-muted">{item.description}</p>
+              <p className="mt-3 text-sm leading-6 text-text-muted sm:mt-4 sm:leading-7">
+                {item.description}
+              </p>
             </motion.article>
           ))}
         </div>
@@ -1154,42 +1327,46 @@ function Updates({locale}: {locale: Locale}) {
   );
 
   return (
-    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/42 py-24" id="updates">
-      <div className="mx-auto max-w-7xl px-6 md:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <section className="scroll-mt-24 border-y border-outline/15 bg-surface/42 py-16 sm:py-24" id="updates">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionEyebrow>{copy.updates.eyebrow}</SectionEyebrow>
-            <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text">
+            <h2 className="font-headline text-3xl font-bold tracking-[-0.03em] text-text sm:text-4xl">
               {copy.updates.title}
             </h2>
-            <p className="mt-5 text-lg leading-8 text-text-muted">{copy.updates.intro}</p>
-            <div className="mt-8 rounded-[1.5rem] border border-outline/20 bg-background/75 p-5">
+            <p className="mt-4 text-base leading-7 text-text-muted sm:mt-5 sm:text-lg sm:leading-8">
+              {copy.updates.intro}
+            </p>
+            <div className="mt-6 rounded-[1.25rem] border border-outline/20 bg-background/75 p-4 sm:mt-8 sm:rounded-[1.5rem] sm:p-5">
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-text-muted">
                 {copy.updates.comingSoonTitle}
               </p>
-              <p className="mt-3 text-sm leading-7 text-text-muted">
+              <p className="mt-3 text-sm leading-6 text-text-muted sm:leading-7">
                 {copy.updates.comingSoonBody}
               </p>
             </div>
           </div>
 
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:gap-4">
             {channels.map((channel) => (
               <a
-                className="group rounded-[1.5rem] border border-outline/20 bg-background/78 p-6 transition-colors duration-300 hover:border-primary/35 hover:bg-background"
+                className="group overflow-hidden rounded-[1.25rem] border border-outline/20 bg-background/78 p-5 transition-colors duration-300 hover:border-primary/35 hover:bg-background sm:rounded-[1.5rem] sm:p-6"
                 href={channel.href}
                 key={channel.title}
                 rel="noreferrer"
                 target="_blank"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-text">
+                <div className="flex min-w-0 items-start justify-between gap-3 sm:gap-4">
+                  <div className="min-w-0">
+                    <h3 className="font-headline text-xl font-semibold tracking-[-0.03em] text-text sm:text-2xl">
                       {channel.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-text-muted">{channel.description}</p>
+                    <p className="mt-2 text-sm leading-6 text-text-muted sm:mt-3 sm:leading-7">
+                      {channel.description}
+                    </p>
                   </div>
-                  <ArrowUpRight className="mt-1 h-5 w-5 flex-none text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </a>
             ))}
@@ -1204,33 +1381,33 @@ function Support({locale}: {locale: Locale}) {
   const copy = COPY[locale];
 
   return (
-    <section className="scroll-mt-24 py-24" id="support">
-      <div className="mx-auto max-w-5xl px-6 text-center md:px-8">
+    <section className="scroll-mt-24 py-16 sm:py-24" id="support">
+      <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 md:px-8">
         <SectionEyebrow>{copy.support.eyebrow}</SectionEyebrow>
-        <h2 className="font-headline text-4xl font-bold tracking-[-0.03em] text-text md:text-5xl">
+        <h2 className="font-headline text-3xl font-bold tracking-[-0.03em] text-text sm:text-4xl md:text-5xl">
           {copy.support.title}
         </h2>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-text-muted">
+        <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-text-muted sm:mt-6 sm:text-lg sm:leading-8">
           {copy.support.intro}
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row sm:flex-wrap">
           <a
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:px-8 sm:py-4"
             href={LINKS.sponsors}
             rel="noreferrer"
             target="_blank"
           >
-            <Heart className="h-4 w-4" />
+            <Heart className="h-4 w-4 shrink-0" />
             {copy.support.sponsor}
           </a>
           <a
-            className="inline-flex items-center justify-center gap-3 rounded-full border border-outline/45 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5"
+            className="inline-flex items-center justify-center gap-3 rounded-full border border-outline/45 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-text transition-colors duration-300 hover:border-primary/50 hover:bg-primary/5 sm:px-8 sm:py-4"
             href={LINKS.github}
             rel="noreferrer"
             target="_blank"
           >
-            <Github className="h-4 w-4" />
+            <Github className="h-4 w-4 shrink-0" />
             {copy.support.star}
           </a>
         </div>
@@ -1245,7 +1422,7 @@ function Footer({locale}: {locale: Locale}) {
 
   return (
     <footer className="border-t border-outline/20 bg-background/92">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-12 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
         <div>
           <p className="font-headline text-2xl font-bold tracking-[0.18em] text-primary">LifeOS</p>
           <p className="mt-3 max-w-md text-sm leading-7 text-text-muted">

@@ -5,6 +5,9 @@
   --font-headline: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
+  /* Extra-small breakpoint for 360px+ tweaks */
+  --breakpoint-xs: 23.75rem; /* 380px */
+
   --color-background: #0f0f1b;
   --color-surface: #161830;
   --color-surface-low: #121428;
