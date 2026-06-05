@@ -647,7 +647,7 @@ function AxiMotif({label}: {label: string}) {
       <img
         alt="Axi, the Mexican axolotl mascot of LifeOS"
         className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-[58%] drop-shadow-[0_0_24px_rgba(255,107,157,0.28)]"
-        src="/axie-mark.svg"
+        src="/axi-mark.svg"
       />
       <div className="absolute inset-x-8 bottom-2 rounded-full border border-primary/20 bg-background/85 px-3 py-1 text-center font-mono text-[0.62rem] uppercase tracking-[0.24em] text-text-muted">
         {label}
