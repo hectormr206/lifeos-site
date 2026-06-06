@@ -117,8 +117,8 @@ const COPY = {
           label: 'Brain',
           title: 'Switchable local LLMs',
           description:
-            'Qwen3.6 35B-A3B (MoE) runs locally on 12 GB VRAM via llama.cpp. A catalog of 9 multimodal 2026 models is switchable from the dashboard.',
-          details: ['llama.cpp on Blackwell', 'Per-model parameter tweaking', '9-model catalog'],
+            'Qwen3.6 35B-A3B (MoE) runs locally on 12 GB VRAM via llama.cpp. A catalog of multimodal 2026 models is switchable from the dashboard.',
+          details: ['llama.cpp on Blackwell', 'Per-model parameter tweaking', 'Model catalog'],
         },
         {
           label: 'Meetings',
@@ -227,7 +227,7 @@ const COPY = {
           status: 'Active now',
           title: 'Streaming model download UI',
           description:
-            'Progress-bar UX in the dashboard for pulling new local models from the 9-model catalog, with checksum verification and resume support.',
+            'Progress-bar UX in the dashboard for pulling new local models from the local model catalog, with checksum verification and resume support.',
         },
         {
           status: 'In progress',
@@ -391,8 +391,8 @@ const COPY = {
           label: 'Cerebro',
           title: 'LLMs locales intercambiables',
           description:
-            'Qwen3.6 35B-A3B (MoE) corre localmente en 12 GB de VRAM via llama.cpp. Un catalogo de 9 modelos multimodales 2026 se cambia desde el dashboard.',
-          details: ['llama.cpp en Blackwell', 'Tuning de parametros por modelo', 'Catalogo de 9 modelos'],
+            'Qwen3.6 35B-A3B (MoE) corre localmente en 12 GB de VRAM via llama.cpp. Un catalogo de modelos multimodales 2026 se cambia desde el dashboard.',
+          details: ['llama.cpp en Blackwell', 'Tuning de parametros por modelo', 'Catalogo de modelos'],
         },
         {
           label: 'Reuniones',
@@ -501,7 +501,7 @@ const COPY = {
           status: 'Activo ahora',
           title: 'UI de descarga de modelos con streaming',
           description:
-            'Barra de progreso en el dashboard para jalar nuevos modelos locales del catalogo de 9, con verificacion de checksum y soporte para reanudar.',
+            'Barra de progreso en el dashboard para jalar nuevos modelos locales del catalogo de modelos, con verificacion de checksum y soporte para reanudar.',
         },
         {
           status: 'En progreso',
