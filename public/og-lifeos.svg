@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="18%" cy="12%" r="75%">
+      <stop offset="0%" stop-color="#00D4AA" stop-opacity="0.18"/>
+      <stop offset="55%" stop-color="#00D4AA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="82%" cy="58%" r="60%">
+      <stop offset="0%" stop-color="#FF6B9D" stop-opacity="0.16"/>
+      <stop offset="60%" stop-color="#FF6B9D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0F0F1B"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect x="22" y="22" width="1156" height="586" rx="30" fill="none" stroke="#2A2F37" stroke-width="2"/>
+
+  <!-- text block (left) -->
+  <text x="92" y="150" font-family="monospace" font-size="23" letter-spacing="6" fill="#00D4AA">LOCAL-FIRST AI PLATFORM &#183; MEXICO</text>
+  <text x="86" y="288" font-family="sans-serif" font-size="130" font-weight="bold" fill="#E6EDF3">LifeOS</text>
+  <text x="90" y="386" font-family="sans-serif" font-size="50" font-weight="bold"><tspan fill="#00D4AA">Install LifeOS.</tspan> <tspan fill="#FF6B9D">Talk to Axi.</tspan></text>
+  <text x="92" y="446" font-family="sans-serif" font-size="29" fill="#8B95A4">Voice, vision, memory &#8212; 100% local on your laptop. No cloud.</text>
+  <text x="92" y="556" font-family="monospace" font-size="25" fill="#8B95A4">lifeos.hectormr.com</text>
+
+  <!-- Axi axolotl mark (right), scaled from the 0-64 mark, centered at (960,330) -->
+  <g transform="translate(960,330) scale(4.0) translate(-32,-34)">
+    <g transform="translate(25,28)">
+      <g transform="rotate(-52)"><ellipse cx="0" cy="-8.5" rx="3.3" ry="8.5" fill="#FF6B9D"/><ellipse cx="0" cy="-11.5" rx="1.7" ry="3.6" fill="#FFA6C4"/></g>
+      <g transform="rotate(-30)"><ellipse cx="0" cy="-9.5" rx="3.5" ry="9.5" fill="#FF6B9D"/><ellipse cx="0" cy="-12.8" rx="1.8" ry="3.8" fill="#FFA6C4"/></g>
+      <g transform="rotate(-10)"><ellipse cx="0" cy="-8.5" rx="3.2" ry="8.5" fill="#FF6B9D"/><ellipse cx="0" cy="-11.5" rx="1.6" ry="3.5" fill="#FFA6C4"/></g>
+    </g>
+    <g transform="translate(39,28)">
+      <g transform="rotate(10)"><ellipse cx="0" cy="-8.5" rx="3.2" ry="8.5" fill="#FF6B9D"/><ellipse cx="0" cy="-11.5" rx="1.6" ry="3.5" fill="#FFA6C4"/></g>
+      <g transform="rotate(30)"><ellipse cx="0" cy="-9.5" rx="3.5" ry="9.5" fill="#FF6B9D"/><ellipse cx="0" cy="-12.8" rx="1.8" ry="3.8" fill="#FFA6C4"/></g>
+      <g transform="rotate(52)"><ellipse cx="0" cy="-8.5" rx="3.3" ry="8.5" fill="#FF6B9D"/><ellipse cx="0" cy="-11.5" rx="1.7" ry="3.6" fill="#FFA6C4"/></g>
+    </g>
+    <ellipse cx="32" cy="37" rx="14" ry="12.5" fill="#FF6B9D"/>
+    <circle cx="23" cy="41" r="2.6" fill="#FF4D88" opacity="0.55"/>
+    <circle cx="41" cy="41" r="2.6" fill="#FF4D88" opacity="0.55"/>
+    <circle cx="26.8" cy="36" r="2.4" fill="#14131F"/>
+    <circle cx="37.2" cy="36" r="2.4" fill="#14131F"/>
+    <circle cx="27.6" cy="35.2" r="0.85" fill="#FFFFFF"/>
+    <circle cx="38.0" cy="35.2" r="0.85" fill="#FFFFFF"/>
+    <path d="M26.5 41.5 Q32 46.5 37.5 41.5" stroke="#14131F" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
