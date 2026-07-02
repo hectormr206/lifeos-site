@@ -110,8 +110,8 @@ const COPY = {
           label: 'Voice',
           title: 'Axi voice assistant',
           description:
-            'Dictation, Q&A with screen, and Q&A with camera — Spanish-first, with voice commands like "Axi, abre el dashboard".',
-          details: ['Whisper turbo on GPU', 'Piper TTS', 'Voice intents to the OS'],
+            'Dictation, Q&A with screen, and Q&A with camera — in Spanish and English, with a hands-free wake word: just say "Axi, …", no hotkey.',
+          details: ['Hands-free wake word', 'Whisper turbo on GPU', 'Piper TTS'],
         },
         {
           label: 'Brain',
@@ -129,10 +129,10 @@ const COPY = {
         },
         {
           label: 'Memory',
-          title: 'Local memory with full-text search',
+          title: 'Knowledge graph of your life',
           description:
-            'SQLite + FTS5 stores conversation history, extracted facts, and meeting notes — timezone-aware and searchable from the dashboard.',
-          details: ['SQLite + FTS5', 'Facts extraction', 'Stays on your disk'],
+            'Everything you tell Axi — people, meds, doctors, dates, preferences — becomes typed nodes and edges. Chat cross-references it, and a natural-language "forget" deletes with confirmation.',
+          details: ['Typed nodes & edges', 'Graph-aware answers', 'Stays on your disk'],
         },
         {
           label: 'Interpreter',
@@ -153,8 +153,9 @@ const COPY = {
         {
           label: 'Health',
           title: 'Health domain',
-          description: 'Log entries and trends, on your disk.',
-          details: ['Entries & trend log', 'Local SQLite storage'],
+          description:
+            'Log entries and trends, on your disk. Say it in English or Spanish — "blood pressure 120 over 80" lands as a structured record, no LLM needed.',
+          details: ['Entries & trend log', 'EN/ES deterministic parsing', 'Local SQLite storage'],
         },
         {
           label: 'Finance',
@@ -171,8 +172,15 @@ const COPY = {
         {
           label: 'Reminders',
           title: 'Reminders domain',
-          description: 'Scheduled, with web-push notifications.',
+          description: 'Scheduled, with web-push notifications and deep links to your phone.',
           details: ['Scheduled reminders', 'Web-push notifications'],
+        },
+        {
+          label: 'Briefings',
+          title: 'Agentic briefings',
+          description:
+            '"Bring me the news every morning at 9" — Axi searches the web on schedule, curates with real cited links, and pushes to your phone.',
+          details: ['Scheduled web search', 'Curated with sources', 'Push with deep links'],
         },
         {
           label: 'Exercise',
@@ -182,10 +190,17 @@ const COPY = {
         },
         {
           label: 'Insights',
-          title: 'Cross-domain insights',
+          title: 'Insights & nightly digest',
           description:
-            'Cross-domain correlations — e.g. poor sleep leads to impulsive purchases — in a daily/weekly digest.',
-          details: ['Cross-domain correlations', 'Daily/weekly digest'],
+            'Cross-domain correlations — e.g. poor sleep leads to impulsive purchases — plus a nightly digest narrated by the local LLM from facts computed in code, delivered at an hour learned from your bedtime.',
+          details: ['Cross-domain correlations', 'LLM-narrated, code-computed facts', 'Adaptive delivery hour'],
+        },
+        {
+          label: 'Reliability',
+          title: 'Reliability core',
+          description:
+            'A single writer owns the encrypted store — no multi-process write corruption — with data-loss-guarded rotating backups and web push that deep-links correctly over your own VPN.',
+          details: ['Single-writer store', 'Guarded rotating backups', 'Push over your VPN'],
         },
       ],
     },
@@ -225,21 +240,21 @@ const COPY = {
       items: [
         {
           status: 'Active now',
-          title: 'Streaming model download UI',
+          title: 'Expanding the MCP tool surface',
           description:
-            'Progress-bar UX in the dashboard for pulling new local models from the local model catalog, with checksum verification and resume support.',
-        },
-        {
-          status: 'In progress',
-          title: 'Side-by-side model evaluation',
-          description:
-            'Run two local models on the same prompt and compare latency, quality, and VRAM footprint directly from the dashboard.',
+            'V1 shipped: a local MCP server exposes memory, reminders, finance, and health tools over stdio so other local agents can use them. Next: insights/digest tools and per-tool consent.',
         },
         {
           status: 'Next up',
-          title: 'Diarization V1 and more voice intents',
+          title: 'OS-level control',
           description:
-            'Promote pyannote diarization to default, plus a wider set of voice commands and an OCR runtime that activates when tesseract is installed.',
+            'Let Axi act on the desktop — open apps and manage windows — safely and with explicit boundaries.',
+        },
+        {
+          status: 'Later',
+          title: 'Multi-device sync and beyond CachyOS',
+          description:
+            'Encrypted peer-to-peer sync across your own devices (still no cloud), and broadening tested support past CachyOS + KDE.',
         },
       ],
     },
@@ -384,8 +399,8 @@ const COPY = {
           label: 'Voz',
           title: 'Asistente de voz Axi',
           description:
-            'Dictado, Q&A con pantalla y Q&A con camara — primero en espanol, con comandos de voz como "Axi, abre el dashboard".',
-          details: ['Whisper turbo en GPU', 'Piper TTS', 'Intents de voz al sistema'],
+            'Dictado, Q&A con pantalla y Q&A con camara — en espanol e ingles, con wake word manos libres: solo di "Axi, …", sin hotkey.',
+          details: ['Wake word manos libres', 'Whisper turbo en GPU', 'Piper TTS'],
         },
         {
           label: 'Cerebro',
@@ -403,10 +418,10 @@ const COPY = {
         },
         {
           label: 'Memoria',
-          title: 'Memoria local con busqueda full-text',
+          title: 'Grafo de conocimiento de tu vida',
           description:
-            'SQLite + FTS5 guarda historial de conversaciones, hechos extraidos y notas de reuniones — consciente de zona horaria y buscable desde el dashboard.',
-          details: ['SQLite + FTS5', 'Extraccion de hechos', 'Vive en tu disco'],
+            'Todo lo que le cuentas a Axi — personas, medicinas, doctores, fechas, preferencias — se vuelve nodos y aristas tipados. El chat lo cruza al responder, y un "olvida..." en lenguaje natural borra con confirmacion.',
+          details: ['Nodos y aristas tipados', 'Respuestas con grafo', 'Vive en tu disco'],
         },
         {
           label: 'Interprete',
@@ -427,8 +442,9 @@ const COPY = {
         {
           label: 'Salud',
           title: 'Dominio Salud',
-          description: 'Registros y tendencias, en tu disco.',
-          details: ['Registro de entradas', 'Almacenamiento local SQLite'],
+          description:
+            'Registros y tendencias, en tu disco. Dilo en espanol o ingles — "presion 120 sobre 80" queda como registro estructurado, sin pasar por el LLM.',
+          details: ['Registro de entradas', 'Parsing determinista ES/EN', 'Almacenamiento local SQLite'],
         },
         {
           label: 'Finanzas',
@@ -445,8 +461,15 @@ const COPY = {
         {
           label: 'Recordatorios',
           title: 'Dominio Recordatorios',
-          description: 'Programados, con notificaciones web-push.',
+          description: 'Programados, con notificaciones web-push y deep links a tu telefono.',
           details: ['Recordatorios programados', 'Notificaciones web-push'],
+        },
+        {
+          label: 'Briefings',
+          title: 'Briefings agenticos',
+          description:
+            '"Traeme las noticias cada manana a las 9" — Axi busca en la web segun el horario, cura con links reales citados y lo manda a tu telefono.',
+          details: ['Busqueda web programada', 'Curado con fuentes', 'Push con deep links'],
         },
         {
           label: 'Ejercicio',
@@ -456,10 +479,17 @@ const COPY = {
         },
         {
           label: 'Insights',
-          title: 'Insights cross-dominio',
+          title: 'Insights y digest nocturno',
           description:
-            'Correlaciones cross-dominio — ej. mal sueno lleva a compras impulsivas — en un digest diario/semanal.',
-          details: ['Correlaciones cross-dominio', 'Digest diario/semanal'],
+            'Correlaciones cross-dominio — ej. mal sueno lleva a compras impulsivas — mas un digest nocturno narrado por el LLM local a partir de hechos calculados en codigo, entregado a una hora aprendida de tu hora de dormir.',
+          details: ['Correlaciones cross-dominio', 'Narrado por LLM, hechos del codigo', 'Hora de entrega adaptativa'],
+        },
+        {
+          label: 'Confiabilidad',
+          title: 'Nucleo de confiabilidad',
+          description:
+            'Un solo escritor es dueno del almacen cifrado — sin corrupcion por escrituras multi-proceso — con backups rotativos protegidos contra perdida de datos y web push que enlaza bien sobre tu propia VPN.',
+          details: ['Almacen single-writer', 'Backups rotativos protegidos', 'Push sobre tu VPN'],
         },
       ],
     },
@@ -499,21 +529,21 @@ const COPY = {
       items: [
         {
           status: 'Activo ahora',
-          title: 'UI de descarga de modelos con streaming',
+          title: 'Expandir la superficie de tools MCP',
           description:
-            'Barra de progreso en el dashboard para jalar nuevos modelos locales del catalogo de modelos, con verificacion de checksum y soporte para reanudar.',
-        },
-        {
-          status: 'En progreso',
-          title: 'Evaluacion lado a lado de modelos',
-          description:
-            'Correr dos modelos locales con el mismo prompt y comparar latencia, calidad y huella de VRAM directamente desde el dashboard.',
+            'V1 ya salio: un servidor MCP local expone tools de memoria, recordatorios, finanzas y salud via stdio para que otros agentes locales las usen. Sigue: tools de insights/digest y consentimiento por tool.',
         },
         {
           status: 'Lo siguiente',
-          title: 'Diarizacion V1 y mas intents de voz',
+          title: 'Control a nivel de SO',
           description:
-            'Promover la diarizacion con pyannote a default, mas un set mas amplio de comandos de voz y un runtime de OCR que se activa cuando tesseract esta instalado.',
+            'Dejar que Axi actue sobre el escritorio — abrir apps y manejar ventanas — de forma segura y con limites explicitos.',
+        },
+        {
+          status: 'Despues',
+          title: 'Sync multi-dispositivo y mas alla de CachyOS',
+          description:
+            'Sync peer-to-peer cifrado entre tus propios dispositivos (sin nube, igual que siempre), y ampliar el soporte probado mas alla de CachyOS + KDE.',
         },
       ],
     },
