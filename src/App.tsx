@@ -16,7 +16,7 @@ const LINKS = {
   license: 'https://github.com/hectormr206/lifeos/blob/main/LICENSE',
   sponsors: 'https://github.com/sponsors/hectormr206',
   installGuide: 'https://github.com/hectormr206/lifeos/blob/main/README.md#install',
-  requestAccess: 'mailto:lifeos@hectormr.com?subject=LifeOS%20closed%20alpha%20access',
+  requestAccess: 'mailto:contact@hectormr.com?subject=LifeOS%20closed%20alpha%20access',
 };
 
 const COPY = {
