@@ -16,6 +16,7 @@ const LINKS = {
   license: 'https://github.com/hectormr206/lifeos/blob/main/LICENSE',
   sponsors: 'https://github.com/sponsors/hectormr206',
   installGuide: 'https://github.com/hectormr206/lifeos/blob/main/README.md#install',
+  requestAccess: 'mailto:hola@lifeos.hectormr.com?subject=LifeOS%20closed%20alpha%20access',
 };
 
 const COPY = {
@@ -23,7 +24,7 @@ const COPY = {
     meta: {
       title: 'LifeOS | Local-first sovereign life platform — powered by Axi',
       description:
-        'LifeOS is a local-first life platform. Install it and talk to Axi — the on-device AI agent with voice, vision, memory, and a real-time interpreter. No cloud, no telemetry.',
+        'LifeOS is a local-first life platform with Axi — the on-device AI agent with voice, vision, memory, and a real-time interpreter. Currently in a private, closed alpha (by invitation). No cloud, no telemetry.',
       ogDescription:
         'LifeOS is the local-first platform where your life lives. Axi — the on-device AI agent inside it — brings voice, vision, memory, and a real-time interpreter. 100% on your laptop.',
       twitterDescription:
@@ -48,13 +49,13 @@ const COPY = {
       closeMenu: 'Close menu',
     },
     hero: {
-      eyebrow: 'Local-first life platform from Mexico',
+      eyebrow: 'Private closed alpha · local-first life platform from Mexico',
       titleBefore: 'Your life,',
       titleAccent: 'your machine',
       titleAfter: 'not their cloud.',
       body:
-        'LifeOS is the local-first platform where your life lives — encrypted store, life domains, dashboard, and structured intelligence, all on your laptop. Axi is the agent inside it: the Mexican axolotl who sees, listens, remembers, and answers. Install LifeOS. Talk to Axi.',
-      primaryCta: 'Install on CachyOS',
+        'LifeOS is the local-first platform where your life lives — encrypted store, life domains, dashboard, and structured intelligence, all on your laptop. Axi is the agent inside it: the Mexican axolotl who sees, listens, remembers, and answers. It is in a private, closed alpha for now — access is by invitation while we get it ready for everyone.',
+      primaryCta: 'Request access',
       secondaryCta: 'View on GitHub',
       chips: ['Voice + vision', 'Local inference', 'Real-time interpreter', 'Privacy by default'],
       signal: 'Axi · on-device agent',
@@ -70,11 +71,11 @@ const COPY = {
       motifLabel: 'Axi / Mexican axolotl',
     },
     install: {
-      eyebrow: 'Install',
+      eyebrow: 'Private access',
       title: 'Run LifeOS on your own machine',
       intro:
-        'LifeOS is open source and installs on CachyOS. One idempotent script pulls the system packages, the Python environment, the local models (with consent for the large one), and the systemd services — no cloud account, no telemetry.',
-      alpha: 'Alpha · CachyOS + NVIDIA only for now',
+        'LifeOS is in a private, closed alpha. If you are invited, one idempotent script pulls the system packages, the Python environment, the local models (with consent for the large one), and the systemd services — no cloud account, no telemetry.',
+      alpha: 'Closed alpha · by invitation · CachyOS + NVIDIA only for now',
       requirements: [
         {
           label: 'OS',
@@ -95,7 +96,7 @@ const COPY = {
         './install.sh',
       ],
       openHint: '# then open http://127.0.0.1:8081 — re-check anytime with ./install.sh --check',
-      ctaPrimary: 'Clone on GitHub',
+      ctaPrimary: 'Request access',
       ctaSecondary: 'Read the install guide',
     },
     proofs: {
@@ -312,7 +313,7 @@ const COPY = {
     meta: {
       title: 'LifeOS | Plataforma de vida local-first — con Axi adentro',
       description:
-        'LifeOS es una plataforma de vida local-first. Instalala y habla con Axi — el agente de IA en dispositivo con voz, vision, memoria e interprete en tiempo real. Sin nube, sin telemetria.',
+        'LifeOS es una plataforma de vida local-first con Axi — el agente de IA en dispositivo con voz, vision, memoria e interprete en tiempo real. Por ahora en alfa cerrada privada (por invitacion). Sin nube, sin telemetria.',
       ogDescription:
         'LifeOS es la plataforma local-first donde vive tu vida. Axi — el agente de IA en dispositivo dentro de ella — trae voz, vision, memoria e interprete en tiempo real. 100% en tu laptop.',
       twitterDescription:
@@ -337,13 +338,13 @@ const COPY = {
       closeMenu: 'Cerrar menu',
     },
     hero: {
-      eyebrow: 'Plataforma de vida local-first desde Mexico',
+      eyebrow: 'Alfa cerrada privada · plataforma de vida local-first desde Mexico',
       titleBefore: 'Tu vida,',
       titleAccent: 'tu maquina',
       titleAfter: 'no su nube.',
       body:
-        'LifeOS es la plataforma local-first donde vive tu vida — almacen cifrado, dominios de vida, dashboard e inteligencia estructurada, todo en tu laptop. Axi es el agente adentro: el ajolote mexicano que ve, escucha, recuerda y responde. Instala LifeOS. Habla con Axi.',
-      primaryCta: 'Instalar en CachyOS',
+        'LifeOS es la plataforma local-first donde vive tu vida — almacen cifrado, dominios de vida, dashboard e inteligencia estructurada, todo en tu laptop. Axi es el agente adentro: el ajolote mexicano que ve, escucha, recuerda y responde. Por ahora esta en alfa cerrada privada — el acceso es por invitacion mientras la preparamos para todos.',
+      primaryCta: 'Solicitar acceso',
       secondaryCta: 'Ver en GitHub',
       chips: ['Voz + vision', 'Inferencia local', 'Interprete en tiempo real', 'Privacidad por defecto'],
       signal: 'Axi · agente en dispositivo',
@@ -359,11 +360,11 @@ const COPY = {
       motifLabel: 'Axi / ajolote mexicano',
     },
     install: {
-      eyebrow: 'Instalar',
+      eyebrow: 'Acceso privado',
       title: 'Corre LifeOS en tu propia maquina',
       intro:
-        'LifeOS es open source y se instala sobre CachyOS. Un script idempotente trae los paquetes del sistema, el entorno de Python, los modelos locales (con consentimiento para el grande) y los servicios de systemd — sin cuenta en la nube, sin telemetria.',
-      alpha: 'Alpha · por ahora solo CachyOS + NVIDIA',
+        'LifeOS esta en alfa cerrada privada. Si tienes invitacion, un script idempotente trae los paquetes del sistema, el entorno de Python, los modelos locales (con consentimiento para el grande) y los servicios de systemd — sin cuenta en la nube, sin telemetria.',
+      alpha: 'Alfa cerrada · por invitacion · por ahora solo CachyOS + NVIDIA',
       requirements: [
         {
           label: 'SO',
@@ -384,7 +385,7 @@ const COPY = {
         './install.sh',
       ],
       openHint: '# luego abre http://127.0.0.1:8081 — reverifica cuando quieras con ./install.sh --check',
-      ctaPrimary: 'Clonar en GitHub',
+      ctaPrimary: 'Solicitar acceso',
       ctaSecondary: 'Leer la guia de instalacion',
     },
     proofs: {
@@ -891,11 +892,11 @@ function Navbar({
           >
             <span className="truncate">LifeOS</span>
             <span
-              aria-label="LifeOS is in alpha"
+              aria-label="LifeOS is in a private closed alpha"
               className="hidden rounded-full border border-amber-400/50 bg-amber-400/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-300 xs:inline-block sm:inline-block"
-              title="LifeOS is in alpha — expect fast iteration and occasional regressions"
+              title="LifeOS is in a private, closed alpha — access is by invitation"
             >
-              Alpha
+              Closed alpha
             </span>
           </a>
 
@@ -973,7 +974,7 @@ function Hero({locale}: {locale: Locale}) {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:px-8 sm:py-4"
-              href="#install"
+              href={LINKS.requestAccess}
             >
               {copy.hero.primaryCta}
             </a>
@@ -1282,11 +1283,8 @@ function Install({locale}: {locale: Locale}) {
         <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:flex-wrap">
           <a
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-background transition-transform duration-300 hover:scale-[0.98] sm:px-8 sm:py-4"
-            href={LINKS.github}
-            rel="noreferrer"
-            target="_blank"
+            href={LINKS.requestAccess}
           >
-            <Github className="h-4 w-4 shrink-0" />
             {copy.ctaPrimary}
           </a>
           <a
